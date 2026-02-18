@@ -1,0 +1,27 @@
+1. Listar Categorias
+2. Criar Categoria
+	id
+	nome
+
+
+3. Listar Mercadorias
+4. Criar Mercadoria
+	id
+	nome
+	categoria
+	cliente
+	dataEntrada
+	origem
+	dataSaida
+	destino
+	
+
+5. Listar Pessoas
+6. Criar Pessoa
+	id
+	cpfCnpj
+	razaoSocial
+	dataNascimento
+	contato
+	email
+	bool (0 - Colaborador / 1 - Cliente)
