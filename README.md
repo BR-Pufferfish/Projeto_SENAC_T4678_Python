@@ -7,3 +7,12 @@ Python
 Django (v6.0.2)
 SQLite
 SQLite Viewer (v25.12.2)
+
+
+# Atividades por Membro:
+Marcelo
+
+Miguel
+
+Kauã
+    
