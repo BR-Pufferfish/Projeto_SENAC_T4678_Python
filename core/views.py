@@ -1,4 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, get_object_or_404
+
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
+from django.views.generic import CreateView, ListView, DeleteView, View
+from django.urls import reverse_lazy
+
+
+from django.http import JsonResponse
+
+from core.models import Categoria
 
 # Create your views here.
 def home(request):
@@ -11,13 +24,44 @@ def listar_categoria(request):
     return render(request, "core/listar_categoria.html" ) 
 
 def criar_categoria(request):
-    return render(request, "core/criar_categoria.html" ) 
+    return render(request, "core/criar_categoria.html" )
 
 def editar_categoria(request):
     return render(request, "core/editar_categoria.html" ) 
 
 def excluir_categoria(request):
-    return render(request, "core/excluir_categoria.html" ) 
+    return render(request, "core/excluir_categoria.html" )
+
+
+
+
+class ListarCategoriasView(ListView):
+    model = Categoria
+    template_name = 'core/listar_categorias.html'
+    context_object_name = 'categorias'
+
+
+class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Categoria
+    fields = ['nome']
+    template_name = 'core/nova_categoria.html'
+    success_url = reverse_lazy('listar-categorias')
+
+    permission_required = 'core.add_categoria'
+    raise_exception = True
+
+
+class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    model = Categoria
+    success_url = reverse_lazy('listar-categorias')
+    permission_required = 'core.delete_categoria'
+    raise_exception = True
+
+    def get(self, request, pk):
+        categoria = get_object_or_404(Categoria, pk=pk)
+        categoria.delete()
+        return redirect(self.success_url)
+
 
 
 
