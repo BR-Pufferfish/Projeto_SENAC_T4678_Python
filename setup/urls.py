@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from core.views import home
-from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
 from core.views import criar_categoria, editar_categoria, excluir_categoria, listar_categoria
+from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
+from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +38,10 @@ urlpatterns = [
     path('listar_mercadorias/', listar_mercadorias),
     path('editar_mercadoria/', editar_mercadoria),
     path('excluir_mercadoria/', excluir_mercadoria),
+
+
+    path('criar_pessoa/', criar_pessoa),
+    path('listar_pessoas/', listar_pessoas),
+    path('editar_pessoa/', editar_pessoa),
+    path('excluir_pessoa/', excluir_pessoa),
 ]
