@@ -16,7 +16,6 @@ def home(request):
 
 
 
-
 def listar_categoria(request):
     return render(request, "core/listar_categoria.html" ) 
 
@@ -91,7 +90,7 @@ def excluir_pessoa(request):
 
 
 def tela_login(request):
-    return render(request, "core/tela_login.html" ) 
+    return render(request, "core/login.html" ) 
 
 def tela_estoque(request):
-    return render(request, "core/tela_estoque.html" ) 
+    return render(request, "core/estoque.html" ) 
