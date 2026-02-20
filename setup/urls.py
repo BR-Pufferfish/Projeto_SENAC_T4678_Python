@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import home
+from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
+from core.views import criar_categoria, editar_categoria, excluir_categoria, listar_categoria
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,14 +26,14 @@ urlpatterns = [
     path('', home),
 
 
-    path('listar_categoria/', home),
-    path('criar_categoria/', home),
-    path('editar_categoria/', home),
-    path('excluir_categoria/', home),
+    path('listar_categoria/', listar_categoria),
+    path('criar_categoria/', criar_categoria),
+    path('editar_categoria/', editar_categoria),
+    path('excluir_categoria/', excluir_categoria),
 
 
-    path('criar_mercadoria/', home),
-    path('listar_mercadorias/', home),
-    path('editar_mercadoria/', home),
-    path('excluir_mercadoria/', home),
+    path('criar_mercadoria/', criar_mercadoria),
+    path('listar_mercadorias/', listar_mercadorias),
+    path('editar_mercadoria/', editar_mercadoria),
+    path('excluir_mercadoria/', excluir_mercadoria),
 ]
