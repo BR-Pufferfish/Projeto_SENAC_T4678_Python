@@ -20,5 +20,18 @@ from core.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', home),
+
+
+    path('listar_categoria/', home),
+    path('criar_categoria/', home),
+    path('editar_categoria/', home),
+    path('excluir_categoria/', home),
+
+
+    path('criar_mercadoria/', home),
+    path('listar_mercadorias/', home),
+    path('editar_mercadoria/', home),
+    path('excluir_mercadoria/', home),
 ]
