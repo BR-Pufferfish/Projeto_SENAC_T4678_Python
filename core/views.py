@@ -8,9 +8,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.views.generic import CreateView, ListView, DeleteView, View
 from django.urls import reverse_lazy
 
-
-from django.http import JsonResponse
-
 from core.models import Categoria
 
 # Create your views here.
@@ -35,32 +32,32 @@ def excluir_categoria(request):
 
 
 
-class ListarCategoriasView(ListView):
-    model = Categoria
-    template_name = 'core/listar_categorias.html'
-    context_object_name = 'categorias'
+# class ListarCategoriasView(ListView):
+#     model = Categoria
+#     template_name = 'core/listar_categorias.html'
+#     context_object_name = 'categorias'
 
 
-class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    model = Categoria
-    fields = ['nome']
-    template_name = 'core/nova_categoria.html'
-    success_url = reverse_lazy('listar-categorias')
+# class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+#     model = Categoria
+#     fields = ['nome']
+#     template_name = 'core/nova_categoria.html'
+#     success_url = reverse_lazy('listar-categorias')
 
-    permission_required = 'core.add_categoria'
-    raise_exception = True
+#     permission_required = 'core.add_categoria'
+#     raise_exception = True
 
 
-class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
-    model = Categoria
-    success_url = reverse_lazy('listar-categorias')
-    permission_required = 'core.delete_categoria'
-    raise_exception = True
+# class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+#     model = Categoria
+#     success_url = reverse_lazy('listar-categorias')
+#     permission_required = 'core.delete_categoria'
+#     raise_exception = True
 
-    def get(self, request, pk):
-        categoria = get_object_or_404(Categoria, pk=pk)
-        categoria.delete()
-        return redirect(self.success_url)
+#     def get(self, request, pk):
+#         categoria = get_object_or_404(Categoria, pk=pk)
+#         categoria.delete()
+#         return redirect(self.success_url)
 
 
 
@@ -89,4 +86,12 @@ def editar_pessoa(request):
     return render(request, "core/editar_pessoa.html" ) 
 
 def excluir_pessoa(request):
-    return render(request, "core/excluir_pessoa.html" ) 
+    return render(request, "core/excluir_pessoa.html" )
+
+
+
+def tela_login(request):
+    return render(request, "core/tela_login.html" ) 
+
+def tela_estoque(request):
+    return render(request, "core/tela_estoque.html" ) 
