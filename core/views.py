@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+def home(request):
+    return render(request,'core/home.html')
 # Create your views here.
 def home(request):
     return render(request, "core/home.html" ) 
@@ -32,3 +33,17 @@ def editar_mercadoria(request):
 
 def excluir_mercadoria(request):
     return render(request, "core/excluir_mercadoria.html" ) 
+
+
+
+def listar_pessoas(request):
+    return render(request, "core/listar_pessoas.html" ) 
+
+def criar_pessoa(request):
+    return render(request, "core/criar_pessoa.html" ) 
+
+def editar_pessoa(request):
+    return render(request, "core/editar_pessoa.html" ) 
+
+def excluir_pessoa(request):
+    return render(request, "core/excluir_pessoa.html" ) 
