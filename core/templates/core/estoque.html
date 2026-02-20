@@ -1,34 +1,56 @@
-{%extends 'core/base.html'%}
-
+{% extends 'core/base.html' %}
 {% block content %}
-<header>
-    
-</header>
-<div style="position: relative; min-height: 100vh;">
 
-  <h1 style="text-align: center;">Lista de Categorias</h1>
+<div class="container-fluid p-0">
 
+    <!-- Header -->
+    <div class="bg-light py-4 text-center position-relative">
+        <div class="position-absolute top-0 start-0 p-3">
+            <!-- <img src="{% static 'img/caminhao.png' %}" width="120"> -->
+            <div class="fw-bold">M.K.M</div>
+        </div>
+        <h1 class="fw-bold">Estoque</h1>
+    </div>
 
-    <!-- Botão Sair -->
-    <a href="{% url 'home' %}" 
-       class="btn btn-secondary"
-       style="position: absolute; top: 20px; left: 20px;">
-       Sair
-    </a>
+    <!-- Fundo azul -->
+    <div class="bg-primary d-flex justify-content-center align-items-center"
+         style="height: 70vh;">
 
-    <div style="
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-">
+        <!-- Card central -->
+        <div class="bg-light p-5 rounded shadow text-center"
+             style="width: 600px;">
 
-    <h2>Cadastrar nova Mercadoria</h2>
-    <h2>Inventário de saídas de mercadoria</h2>
-    <h2>Lista de mercadoria</h2>
+            <!-- Botão sair -->
+            <div class="text-start mb-4">
+                <a 
+                   class="btn btn-primary px-4 rounded-pill">
+                    Sair
+                </a>
+            </div>
+
+            <!-- Botões principais -->
+            <div class="d-grid gap-3 col-8 mx-auto">
+
+                <a 
+                   class="btn btn-primary rounded-pill">
+                    Cadastrar nova Mercadoria
+                </a>
+
+                <a
+                   class="btn btn-primary rounded-pill">
+                    Inventário de saídas de mercadoria
+                </a>
+
+                <a 
+                   class="btn btn-primary rounded-pill">
+                    Lista de mercadoria
+                </a>
+
+            </div>
+
+        </div>
+    </div>
 
 </div>
 
-
-{%endblock %}
+{% endblock %}

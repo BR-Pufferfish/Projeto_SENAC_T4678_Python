@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid p-0">
+
+    <!-- Header -->
+    <div class="bg-light py-4 text-center position-relative">
+        <div class="position-absolute top-0 start-0 p-3">
+            <img src="{% static 'img/caminhao.png' %}" width="120">
+            <div class="fw-bold">M.K.M</div>
+        </div>
+        <h1 class="fw-bold">Cadastrar Mercadoria</h1>
+    </div>
+
+    <!-- Fundo Azul -->
+    <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+
+        <!-- Card Central -->
+        <div class="bg-light p-5 rounded shadow" style="width: 800px;">
+
+            <!-- Botão Voltar -->
+            <div class="mb-4">
+                <a class="btn btn-primary rounded-pill px-4">
+                    Voltar
+                </a>
+            </div>
+
+            <!-- Formulário -->
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Mercadoria</label>
+                        <input type="text" name="nome" class="form-control" placeholder="Ex: Material de construção"
+                            required>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Cliente</label>
+                        <input type="text" name="cliente" class="form-control" placeholder="Ex: Brafumo" required>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">dtEntrada</label>
+                        <input type="date" name="dt_entrada" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Origem</label>
+                        <input type="text" name="origem" class="form-control" placeholder="Ex: Santa Cruz do Sul - RS"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="text-end mt-4">
+                    <a class="btn btn-secondary rounded-pill px-4 me-2">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">
+                        Salvar
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
