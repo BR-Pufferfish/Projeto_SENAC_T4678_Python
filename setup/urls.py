@@ -21,7 +21,7 @@ from django.urls import path
 
 from core.views import home
 from core.views import tela_login, tela_estoque
-from core.views import criar_categoria, editar_categoria, excluir_categoria, listar_categoria
+from core.views import criar_categoria, editar_categoria, excluir_categoria
 from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
 from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
 from core.views import ListarCategoriasView #,NovaCategoriaView, ExcluirCategoriaView
