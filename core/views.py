@@ -16,8 +16,8 @@ def home(request):
 
 
 
-def listar_categoria(request):
-    return render(request, "core/listar_categoria.html" ) 
+# def listar_categoria(request):
+#     return render(request, "core/listar_categoria.html" ) 
 
 def criar_categoria(request):
     return render(request, "core/criar_categoria.html" )
@@ -31,18 +31,17 @@ def excluir_categoria(request):
 
 
 
-
-# class ListarCategoriasView(ListView):
-#     model = Categoria
-#     template_name = 'core/listar_categorias.html'
-#     context_object_name = 'categorias'
+class ListarCategoriasView(ListView):
+    model = Categoria
+    template_name = 'core/listar_categoria.html'
+    context_object_name = 'categorias'
 
 
 # class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 #     model = Categoria
 #     fields = ['nome']
-#     template_name = 'core/nova_categoria.html'
-#     success_url = reverse_lazy('listar-categorias')
+#     template_name = 'core/criar_categoria.html'
+#     success_url = reverse_lazy('listar_categorias')
 
 #     permission_required = 'core.add_categoria'
 #     raise_exception = True
@@ -64,6 +63,12 @@ def excluir_categoria(request):
 
 def listar_mercadorias(request):
     return render(request, "core/listar_mercadorias.html" ) 
+
+# class ListarEstoqueView(ListView):
+#     model = Estoque
+#     template_name = 'core/listar_mercadorias.html'
+#     context_object_name = 'mercadorias'
+
 
 def criar_mercadoria(request):
     return render(request, "core/criar_mercadoria.html" ) 
