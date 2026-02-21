@@ -15,7 +15,7 @@ header {
     color: white;
 
     /* imagem de fundo */
-    background-image: url("{% static 'core/imagens/imagem.png' %}");
+    background-image: url('../imagens/imagem.png');
     /* troque pelo caminho correto */
     background-size: cover;
     background-position: center;
@@ -200,99 +200,3 @@ main {
     font-weight: 500;
 }
 
-/* ===== RESPONSIVO ===== */
-
-@media (max-width: 1100px) {
-    .estadisticas {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    main {
-        padding: 40px 20px;
-    }
-
-    .topo-info {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .missao h2,
-    .visao h2 {
-        font-size: 28px;
-    }
-
-    .missao p,
-    .visao p {
-        font-size: 18px;
-    }
-
-    .estadisticas {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        margin-top: 50px;
-    }
-}
-/* ===== ANIMAÇÃO GLOBAL ===== */
-body {
-    opacity: 0;
-    animation: fadeBody 0.8s ease forwards;
-}
-
-/* fade do body ao carregar */
-@keyframes fadeBody {
-    to {
-        opacity: 1;
-    }
-}
-
-/* ===== HEADER HERO ===== */
-header {
-    transform: translateY(-40px);
-    opacity: 0;
-    animation: headerEntrance 0.9s ease forwards;
-    animation-delay: 0.2s;
-}
-
-@keyframes headerEntrance {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* ===== CONTEÚDO PRINCIPAL ===== */
-main {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: mainEntrance 0.9s ease forwards;
-    animation-delay: 0.5s;
-}
-
-@keyframes mainEntrance {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== CARDS APARECENDO ===== */
-.modelo {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: cardFade 0.6s ease forwards;
-}
-
-/* delay em cascata */
-.modelo:nth-child(1) { animation-delay: 0.7s; }
-.modelo:nth-child(2) { animation-delay: 0.85s; }
-.modelo:nth-child(3) { animation-delay: 1s; }
-.modelo:nth-child(4) { animation-delay: 1.15s; }
-
-@keyframes cardFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
