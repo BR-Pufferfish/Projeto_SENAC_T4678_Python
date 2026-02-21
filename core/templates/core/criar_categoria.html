@@ -1,27 +1,56 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block content %}
-<header>
 
-</header>
-<div style="position: relative; min-height: 100vh;">
+<div class="container-fluid p-0">
 
-  <h1 style="text-align: center;">Lista de Categorias</h1>
-    <h2>Nome:</h2>
-    <input type="text" name="nome" placeholder="Material de Construção" required>
+   <!-- Header -->
+   <div class="bg-light py-4 text-center position-relative">
+      <div class="position-absolute top-0 start-0 p-3">
+         <!-- <img src="{% static 'img/caminhao.png' %}" width="120"> -->
+         <div class="fw-bold">M.K.M</div>
+      </div>
+      <h1 class="fw-bold">Cadastrar Categorias</h1>
+   </div>
 
+   <!-- Fundo Azul -->
+   <div class="bg-primary d-flex justify-content-center align-items-center" style="height: 70vh;">
 
-    <!-- Botão Voltar -->
-    <a href="{% url 'home' %}" 
-       class="btn btn-secondary"
-       style="position: absolute; top: 20px; left: 20px;">
-        Voltar
-    </a>
+      <!-- Card central -->
+      <div class="bg-light p-5 rounded shadow" style="width: 700px;">
 
-    <!-- Botão Nova cancelar -->
-    <a href="{% url 'nova_categoria' %}" 
-       class="btn btn-primary"
-       style="position: absolute; bottom: 20px; right: 20px;">
-       Cancelar
-    </a>
-{%endblock %}
+         <!-- Botão Voltar -->
+         <div class="mb-4">
+            <a class="btn btn-primary rounded-pill px-4">
+               Voltar
+            </a>
+         </div>
+
+         <!-- Formulário -->
+         <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-4 col-8">
+               <label class="form-label fw-bold">NOME</label>
+               <input type="text" name="nome" class="form-control" placeholder="Ex: Material de construção" required>
+            </div>
+
+            <!-- Botões -->
+            <div class="text-end mt-4">
+               <a class="btn btn-secondary rounded-pill px-4 me-2">
+                  Cancelar
+               </a>
+
+               <button type="submit" class="btn btn-primary rounded-pill px-4">
+                  Salvar
+               </button>
+            </div>
+
+         </form>
+
+      </div>
+   </div>
+
+</div>
+
+{% endblock %}

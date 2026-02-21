@@ -17,10 +17,10 @@ Including another URLconf
 from turtle import home
 
 from django.contrib import admin
-from core.views import home
 from django.urls import path
 
 from core.views import home
+from core.views import tela_login, tela_estoque
 from core.views import criar_categoria, editar_categoria, excluir_categoria, listar_categoria
 from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
 from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
@@ -29,6 +29,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', home),
+
+
+    path('tela_login/', tela_login),
+    path('tela_estoque/', tela_estoque),
 
 
     path('listar_categoria/', listar_categoria),
