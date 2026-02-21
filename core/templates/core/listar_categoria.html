@@ -35,16 +35,16 @@
           </tr>
         </thead>
         <tbody>
-          <!-- {% for categoria in categorias %}
-                    <tr>
-                        <td>{{ categoria.id }}</td>
-                        <td>{{ categoria.nome }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="2">Nenhuma categoria cadastrada.</td>
-                    </tr>
-                    {% endfor %} -->
+          {% for categoria in categorias %}
+          <tr>
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nome }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="2">Nenhuma categoria cadastrada.</td>
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
 

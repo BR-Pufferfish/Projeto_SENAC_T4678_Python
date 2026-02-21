@@ -24,6 +24,7 @@ from core.views import tela_login, tela_estoque
 from core.views import criar_categoria, editar_categoria, excluir_categoria, listar_categoria
 from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
 from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
+from core.views import ListarCategoriasView #,NovaCategoriaView, ExcluirCategoriaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,10 +36,15 @@ urlpatterns = [
     path('tela_estoque/', tela_estoque),
 
 
-    path('listar_categoria/', listar_categoria),
+    # path('listar_categoria/', listar_categoria),
     path('criar_categoria/', criar_categoria),
     path('editar_categoria/', editar_categoria),
     path('excluir_categoria/', excluir_categoria),
+
+
+    path('listar_categoria', ListarCategoriasView.as_view(), name='listar_categorias'),
+    # path('criar_categoria', NovaCategoriaView.as_view(), name='nova-categoria'),
+    # path('excluir_categoria/<int:pk>', ExcluirCategoriaView.as_view(), name='excluir-categoria'),
 
 
     path('criar_mercadoria/', criar_mercadoria),
