@@ -31,6 +31,7 @@ def excluir_categoria(request):
 
 
 
+
 # class ListarCategoriasView(ListView):
 #     model = Categoria
 #     template_name = 'core/listar_categorias.html'
