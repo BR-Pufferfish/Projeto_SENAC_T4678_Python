@@ -49,24 +49,15 @@ urlpatterns = [
     path('editar_categoria/<int:pk>', EditarCategoriaView.as_view(), name='editar_categoria'),
     path('excluir_categoria/<int:pk>', ExcluirCategoriaView.as_view(), name='excluir_categoria'),
 
-    # Exemplo de uso com FBV (Function Based View)
-    # path('listar_mercadoria/', listar_mercadorias),
-    # path('criar_mercadoria/', criar_mercadoria),
-    # path('editar_mercadoria/', editar_mercadoria),
-    # path('excluir_mercadoria/', excluir_mercadoria),
 
-    # Exemplo de uso com CBV (class based view)
     path('listar_mercadoria/', ListarEstoqueView.as_view(), name='listar_mercadoria'),
     path('criar_mercadoria/', NovoEstoqueView.as_view(), name='criar_mercadoria'),
     path('editar_mercadoria/<int:pk>', EditarEstoqueView.as_view(), name='editar_mercadoria'),
     path('excluir_mercadoria/<int:pk>', ExcluirEstoqueView.as_view(), name='excluir_mercadoria'),
 
 
-    # path('criar_pessoa/', criar_pessoa),
-    path('criar_pessoa/', CriarPessoasView.as_view(), name='criar_pessoa'),
-    # path('listar_pessoa/', listar_pessoas),
     path('listar_pessoa/', ListarPessoasView.as_view(), name='listar_pessoa'),
-    # path('editar_pessoa/', editar_pessoa),
+    path('criar_pessoa/', CriarPessoasView.as_view(), name='criar_pessoa'),
     path('editar_pessoa/<int:pk>', EditarPessoaView.as_view(), name='editar_pessoa'),
     path('excluir_pessoa/<int:pk>', ExcluirPessoasView.as_view(), name='excluir_pessoa'),
 ]
