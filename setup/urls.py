@@ -49,7 +49,7 @@ urlpatterns = [
     path('editar_categoria/<int:pk>', EditarCategoriaView.as_view(), name='editar_categoria'),
     path('excluir_categoria/<int:pk>', ExcluirCategoriaView.as_view(), name='excluir_categoria'),
 
-    # Exemplo de uso com FBV (Function Based View) 
+    # Exemplo de uso com FBV (Function Based View)
     # path('listar_mercadoria/', listar_mercadorias),
     # path('criar_mercadoria/', criar_mercadoria),
     # path('editar_mercadoria/', editar_mercadoria),

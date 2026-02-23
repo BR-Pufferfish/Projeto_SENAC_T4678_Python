@@ -44,7 +44,7 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     raise_exception = True
 
 
-class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Categoria
     template_name = 'core/editar_categoria.html'
     success_url = reverse_lazy('listar_categoria')
