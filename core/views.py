@@ -37,26 +37,26 @@ class ListarCategoriasView(ListView):
     context_object_name = 'categorias'
 
 
-# class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-#     model = Categoria
-#     fields = ['nome']
-#     template_name = 'core/criar_categoria.html'
-#     success_url = reverse_lazy('listar_categorias')
+class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Categoria
+    fields = ['nome']
+    template_name = 'core/criar_categoria.html'
+    success_url = reverse_lazy('listar_categorias')
 
-#     permission_required = 'core.add_categoria'
-#     raise_exception = True
+    permission_required = 'core.add_categoria'
+    raise_exception = True
 
 
-# class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
-#     model = Categoria
-#     success_url = reverse_lazy('listar-categorias')
-#     permission_required = 'core.delete_categoria'
-#     raise_exception = True
+class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    model = Categoria
+    success_url = reverse_lazy('listar_categorias')
+    permission_required = 'core.delete_categoria'
+    raise_exception = True
 
-#     def get(self, request, pk):
-#         categoria = get_object_or_404(Categoria, pk=pk)
-#         categoria.delete()
-#         return redirect(self.success_url)
+    def get(self, request, pk):
+        categoria = get_object_or_404(Categoria, pk=pk)
+        categoria.delete()
+        return redirect(self.success_url)
 
 
 
