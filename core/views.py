@@ -167,7 +167,7 @@ class ListarPessoasView(ListView):
 #     return render(request, "core/criar_pessoa.html" ) 
 class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Pessoa
-    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'data_criacao']
+    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
     template_name = 'core/criar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
 
