@@ -142,7 +142,7 @@ class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ListarPessoasView(ListView):
     model = Pessoa
-    template_name = 'core/listar_pessoas.html'
+    template_name = 'core/listar_pessoa.html'
     context_object_name = 'pessoas'
 # def listar_pessoas(request):
 
