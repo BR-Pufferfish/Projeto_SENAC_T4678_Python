@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
-from django.views.generic import CreateView, ListView, DeleteView, View
+from django.views.generic import CreateView, ListView, DeleteView, UpdateView, View
 from django.urls import reverse_lazy
 
 from core.models import Categoria, Estoque
@@ -106,7 +106,7 @@ class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     raise_exception = True
 
 
-class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Estoque
     template_name = 'core/editar_mercadoria.html'
     success_url = reverse_lazy('listar_mercadoria')

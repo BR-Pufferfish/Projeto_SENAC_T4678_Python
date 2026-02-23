@@ -14,6 +14,7 @@ class Pessoa(models.Model):
     data_nascimento = models.DateTimeField()
     contato = models.CharField(max_length=11)
     email = models.EmailField(max_length=100)
+    colaborador_cliente = models.IntegerField(choices=[(0, 'Cliente'), (1, 'Colaborador')])
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
