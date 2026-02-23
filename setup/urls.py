@@ -23,9 +23,9 @@ from core.views import home
 from core.views import tela_login, tela_estoque
 # from core.views import criar_categoria, editar_categoria, excluir_categoria
 # from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
-from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
+# from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
-from core.views import ListarEstoqueView, NovoEstoqueView
+from core.views import ListarEstoqueView, NovoEstoqueView, EditarEstoqueView, ExcluirEstoqueView
 from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoasView
 
 urlpatterns = [
@@ -58,9 +58,8 @@ urlpatterns = [
     # Exemplo de uso com CBV (class based view)
     path('listar_mercadoria/', ListarEstoqueView.as_view(), name='listar_mercadoria'),
     path('criar_mercadoria/', NovoEstoqueView.as_view(), name='criar_mercadoria'),
-    path('editar_mercadoria/', editar_mercadoria),
-    path('editar_mercadoria/', Editar),
-    path('excluir_mercadoria/', excluir_mercadoria),
+    path('editar_mercadoria/<int:pk>', EditarEstoqueView.as_view(), name='editar_mercadoria'),
+    path('excluir_mercadoria/<int:pk>', ExcluirEstoqueView.as_view(), name='excluir_mercadoria'),
 
 
     # path('criar_pessoa/', criar_pessoa),
