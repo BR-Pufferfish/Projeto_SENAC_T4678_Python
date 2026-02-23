@@ -26,6 +26,7 @@ from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, 
 from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
 from core.views import ListarEstoqueView, NovoEstoqueView
+from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoasView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -58,8 +59,11 @@ urlpatterns = [
     path('excluir_mercadoria/', excluir_mercadoria),
 
 
-    path('criar_pessoa/', criar_pessoa),
-    path('listar_pessoa/', listar_pessoas),
-    path('editar_pessoa/', editar_pessoa),
-    path('excluir_pessoa/', excluir_pessoa),
+    # path('criar_pessoa/', criar_pessoa),
+    path('criar_pessoa/', CriarPessoasView.as_view(), name='criar_pessoa'),
+    # path('listar_pessoa/', listar_pessoas),
+    path('listar_pessoa/', ListarPessoasView.as_view(), name='listar_pessoa'),
+    # path('editar_pessoa/', editar_pessoa),
+    path('editar_pessoa/<int:pk>', EditarPessoaView.as_view(), name='editar_pessoa'),
+    path('excluir_pessoa/<int:pk>', ExcluirPessoasView.as_view(), name='excluir_pessoa'),
 ]
