@@ -18,15 +18,12 @@ def home(request):
 
 # def listar_categoria(request):
 #     return render(request, "core/listar_categoria.html" ) 
-
-def criar_categoria(request):
-    return render(request, "core/criar_categoria.html" )
-
-def editar_categoria(request):
-    return render(request, "core/editar_categoria.html" ) 
-
-def excluir_categoria(request):
-    return render(request, "core/excluir_categoria.html" )
+# def criar_categoria(request):
+#     return render(request, "core/criar_categoria.html" )
+# def editar_categoria(request):
+#     return render(request, "core/editar_categoria.html" ) 
+# def excluir_categoria(request):
+#     return render(request, "core/excluir_categoria.html" )
 
 
 
@@ -41,18 +38,40 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     model = Categoria
     fields = ['nome']
     template_name = 'core/criar_categoria.html'
-    success_url = reverse_lazy('listar_categorias')
+    success_url = reverse_lazy('listar_categoria')
 
     permission_required = 'core.add_categoria'
     raise_exception = True
 
 
+class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    model = Categoria
+    template_name = 'core/editar_categoria.html'
+    success_url = reverse_lazy('listar_categoria')
+    permission_required = 'core.change_categoria'
+    raise_exception = True
+
+    def get(self, request, pk):
+        categoria = get_object_or_404(Categoria, pk=pk)
+        return render(request, self.template_name, {'categoria': categoria})
+
+    def post(self, request, pk):
+        categoria = get_object_or_404(Categoria, pk=pk)
+        categoria.nome = request.POST.get('nome')
+        categoria.save()
+        return redirect(self.success_url)
+
+
 class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
     model = Categoria
-    success_url = reverse_lazy('listar_categorias')
+    ## Caso quiséssemos usar um template para confirmar a exclusão, descomentariamos a linha abaixo e criaríamos o template 'core/confirmar_exclusao_categoria.html'
+    # template_name = 'core/confirmar_exclusao_categoria.html'
+    success_url = reverse_lazy('listar_categoria')
     permission_required = 'core.delete_categoria'
     raise_exception = True
 
+    # Como não queremos usar um template para confirmar a exclusão, mudamos o mixing para get e não DeleteView
+    # Sobrescrevemos o método get para chamar o método post diretamente, assim a exclusão acontece sem precisar de confirmação.
     def get(self, request, pk):
         categoria = get_object_or_404(Categoria, pk=pk)
         categoria.delete()
