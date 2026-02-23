@@ -92,7 +92,7 @@ class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ListarEstoqueView(ListView):
     model = Estoque
-    template_name = 'core/listar_mercadorias.html'
+    template_name = 'core/listar_mercadoria.html'
     context_object_name = 'mercadorias'
 
 
