@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.views.generic import CreateView, ListView, DeleteView, View
 from django.urls import reverse_lazy
 
-from core.models import Categoria
+from core.models import Categoria, Estoque
 
 # Create your views here.
 def home(request):
@@ -28,7 +28,7 @@ def home(request):
 
 
 
-class ListarCategoriasView(ListView):
+class ListarCategoriaView(ListView):
     model = Categoria
     template_name = 'core/listar_categoria.html'
     context_object_name = 'categorias'
@@ -80,23 +80,64 @@ class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 
 
-def listar_mercadorias(request):
-    return render(request, "core/listar_mercadorias.html" ) 
+# def listar_mercadorias(request):
+#     return render(request, "core/listar_mercadorias.html" ) 
+# def criar_mercadoria(request):
+#     return render(request, "core/criar_mercadoria.html" ) 
+# def editar_mercadoria(request):
+#     return render(request, "core/editar_mercadoria.html" ) 
+# def excluir_mercadoria(request):
+#     return render(request, "core/excluir_mercadoria.html" ) 
 
-# class ListarEstoqueView(ListView):
-#     model = Estoque
-#     template_name = 'core/listar_mercadorias.html'
-#     context_object_name = 'mercadorias'
+
+class ListarEstoqueView(ListView):
+    model = Estoque
+    template_name = 'core/listar_mercadorias.html'
+    context_object_name = 'mercadorias'
 
 
-def criar_mercadoria(request):
-    return render(request, "core/criar_mercadoria.html" ) 
+class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Estoque
+    fields = ['categoria', 'pessoa', 'mercadoria', 'origem', 'saldo']
+    template_name = 'core/criar_mercadoria.html'
+    success_url = reverse_lazy('listar_mercadoria')
 
-def editar_mercadoria(request):
-    return render(request, "core/editar_mercadoria.html" ) 
+    permission_required = 'core.add_estoque'
+    raise_exception = True
 
-def excluir_mercadoria(request):
-    return render(request, "core/excluir_mercadoria.html" ) 
+
+class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    model = Estoque
+    template_name = 'core/editar_mercadoria.html'
+    success_url = reverse_lazy('listar_mercadoria')
+    permission_required = 'core.change_estoque'
+    raise_exception = True
+
+    def get(self, request, pk):
+        estoque = get_object_or_404(Estoque, pk=pk)
+        return render(request, self.template_name, {'estoque': estoque})
+
+    def post(self, request, pk):
+        estoque = get_object_or_404(Estoque, pk=pk)
+        estoque.categoria_id = request.POST.get('categoria')
+        estoque.pessoa_id = request.POST.get('pessoa')
+        estoque.mercadoria = request.POST.get('mercadoria')
+        estoque.origem = request.POST.get('origem')
+        estoque.saldo = request.POST.get('saldo')
+        estoque.save()
+        return redirect(self.success_url)
+
+
+class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    model = Estoque
+    success_url = reverse_lazy('listar_mercadoria')
+    permission_required = 'core.delete_estoque'
+    raise_exception = True
+
+    def get(self, request, pk):
+        estoque = get_object_or_404(Estoque, pk=pk)
+        estoque.delete()
+        return redirect(self.success_url)
 
 
 
