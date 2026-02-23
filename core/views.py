@@ -44,7 +44,7 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     raise_exception = True
 
 
-class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Categoria
     template_name = 'core/editar_categoria.html'
     success_url = reverse_lazy('listar_categoria')
@@ -142,7 +142,7 @@ class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ListarPessoasView(ListView):
     model = Pessoa
-    template_name = 'core/listar_pessoas.html'
+    template_name = 'core/listar_pessoa.html'
     context_object_name = 'pessoas'
 # def listar_pessoas(request):
 

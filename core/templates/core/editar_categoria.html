@@ -10,7 +10,7 @@
          <!-- <img src="{% static 'img/caminhao.png' %}" width="120"> -->
          <div class="fw-bold">M.K.M</div>
       </div>
-      <h1 class="fw-bold">Cadastrar Categorias</h1>
+      <h1 class="fw-bold">Editar Categoria</h1>
    </div>
 
    <!-- Fundo Azul -->
@@ -32,7 +32,7 @@
 
             <div class="mb-4 col-8">
                <label class="form-label fw-bold">NOME</label>
-               <input type="text" name="nome" class="form-control" placeholder="Ex: Material de construção" required>
+               <input type="text" name="nome" class="form-control" value="{{ categoria.nome }}" required>
             </div>
 
             <!-- Botões -->
