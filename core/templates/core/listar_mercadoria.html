@@ -7,7 +7,7 @@
     <!-- Header -->
     <div class="bg-light py-4 text-center position-relative">
         <div class="position-absolute top-0 start-0 p-3">
-            <!-- <img src="{% static 'img/caminhao.png' %}" width="120"> -->
+            <!-- <img src="{% static 'img/logo.png' %}" width="120"> -->
             <div class="fw-bold">M.K.M</div>
         </div>
         <h1 class="fw-bold">Lista de Mercadoria</h1>
@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a href="/home" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
@@ -39,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- {% for mercadoria in mercadorias %}
+                    {% for mercadoria in mercadorias %}
                     <tr>
                         <td>{{ mercadoria.id }}</td>
                         <td>{{ mercadoria.nome }}</td>
@@ -47,8 +47,7 @@
                         <td>{{ mercadoria.dt_entrada }}</td>
                         <td>{{ mercadoria.origem }}</td>
                         <td>
-                            <a 
-                               class="btn btn-primary btn-sm rounded-pill">
+                            <a class="btn btn-primary btn-sm rounded-pill">
                                 Despachar
                             </a>
                         </td>
@@ -59,13 +58,13 @@
                             Nenhuma mercadoria cadastrada.
                         </td>
                     </tr>
-                    {% endfor %} -->
+                    {% endfor %}
                 </tbody>
             </table>
 
             <!-- Botão Nova Mercadoria -->
             <div class="text-end mt-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a href="/criar_mercadoria" class="btn btn-primary rounded-pill px-4">
                     Cadastrar nova Mercadoria
                 </a>
             </div>
