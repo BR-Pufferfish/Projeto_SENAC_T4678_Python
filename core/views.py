@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
-
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
@@ -165,15 +165,24 @@ class ListarPessoasView(ListView):
 
 # def criar_pessoa(request):
 #     return render(request, "core/criar_pessoa.html" ) 
-class CriarPessoasView(LoginRequiredMixin, CreateView):    
+class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Pessoa
     fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
     template_name = 'core/criar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
-    
+
     permission_required = 'core.add_pessoa'
     raise_exception = True
- 
+
+    def form_valid(self, form):
+        print("FORM VALID ✅")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("FORM INVALID ❌")
+        print(form.errors)
+        return super().form_invalid(form)
+    
     
 
 # def editar_pessoa(request):
