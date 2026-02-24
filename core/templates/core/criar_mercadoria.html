@@ -32,25 +32,38 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">Mercadoria</label>
-                        <input type="text" name="nome" class="form-control" placeholder="Ex: Material de construção"
-                            required>
+                        <label class="form-label fw-bold">Categoria</label>
+                        <select name="categoria" class="form-select">
+                            {% for cat in categorias %}
+                            <option value="{{ cat.id }}">{{ cat.nome }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Cliente</label>
-                        <input type="text" name="cliente" class="form-control" placeholder="Ex: Brafumo" required>
+                        <select name="pessoa" class="form-select">
+                            {% for pessoa in pessoas %}
+                            <option value="{{ pessoa.id }}">{{ pessoa.razao_social }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">dtEntrada</label>
-                        <input type="date" name="dt_entrada" class="form-control" required>
+                        <label class="form-label fw-bold">Mercadoria</label>
+                        <input type="text" name="mercadoria" class="form-control"
+                            placeholder="Ex: Tijolos, Areia, Cimento..." required>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Origem</label>
                         <input type="text" name="origem" class="form-control" placeholder="Ex: Santa Cruz do Sul - RS"
                             required>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Saldo</label>
+                        <input type="number" name="saldo" class="form-control" placeholder="Ex: 1000" required>
                     </div>
                 </div>
 

@@ -44,8 +44,8 @@ urlpatterns = [
     # path('excluir_categoria/', excluir_categoria),
 
     # Exemplo de uso com CBV (class based view)
-    path('listar_categoria', ListarCategoriaView.as_view(), name='listar_categoria'),
-    path('criar_categoria', NovaCategoriaView.as_view(), name='criar_categoria'),
+    path('listar_categoria/', ListarCategoriaView.as_view(), name='listar_categoria'),
+    path('criar_categoria/', NovaCategoriaView.as_view(), name='criar_categoria'),
     path('editar_categoria/<int:pk>', EditarCategoriaView.as_view(), name='editar_categoria'),
     path('excluir_categoria/<int:pk>', ExcluirCategoriaView.as_view(), name='excluir_categoria'),
 
