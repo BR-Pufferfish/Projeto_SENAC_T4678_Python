@@ -165,14 +165,16 @@ class ListarPessoasView(ListView):
 
 # def criar_pessoa(request):
 #     return render(request, "core/criar_pessoa.html" ) 
-class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):    
+class CriarPessoasView(LoginRequiredMixin, CreateView):    
     model = Pessoa
     fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
     template_name = 'core/criar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
-
+    
     permission_required = 'core.add_pessoa'
     raise_exception = True
+ 
+    
 
 # def editar_pessoa(request):
 #     return render(request, "core/editar_pessoa.html" ) 
@@ -191,9 +193,10 @@ class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
         pessoa = get_object_or_404(Pessoa, pk=pk)
         pessoa.cpf_cnpj = request.POST.get('cpf_cnpj')
         pessoa.razao_social = request.POST.get('razao_social')
-        pessoa.data_nascimento = request.POST.get('data_nascimento')
+        pessoa.data_nascimento = '2024-01-01' #request.POST.get('data_nascimento')
         pessoa.contato = request.POST.get('contato')
         pessoa.email = request.POST.get('email')
+        
        
         pessoa.save()
         return redirect(self.success_url)
