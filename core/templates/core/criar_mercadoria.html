@@ -42,7 +42,11 @@
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Cliente</label>
-                        <input type="text" name="pessoa" class="form-control" placeholder="Ex: Brafumo" required>
+                        <select name="pessoa" class="form-select">
+                            {% for pessoa in pessoas %}
+                            <option value="{{ pessoa.id }}">{{ pessoa.razao_social }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-4">

@@ -31,9 +31,10 @@
                 <thead>
                     <tr class="fw-bold">
                         <th>ID</th>
-                        <th>Mercadoria</th>
+                        <th>Categoria</th>
                         <th>Cliente</th>
-                        <th>dtEntrada</th>
+                        <th>Mercadoria</th>
+                        <th>Entrada</th>
                         <th>Origem</th>
                         <th></th>
                     </tr>
@@ -42,9 +43,10 @@
                     {% for mercadoria in mercadorias %}
                     <tr>
                         <td>{{ mercadoria.id }}</td>
-                        <td>{{ mercadoria.nome }}</td>
-                        <td>{{ mercadoria.cliente }}</td>
-                        <td>{{ mercadoria.dt_entrada }}</td>
+                        <td>{{ mercadoria.categoria }}</td>
+                        <td>{{ mercadoria.pessoa }}</td>
+                        <td>{{ mercadoria.mercadoria }}</td>
+                        <td>{{ mercadoria.data_entrada }}</td>
                         <td>{{ mercadoria.origem }}</td>
                         <td>
                             <a class="btn btn-primary btn-sm rounded-pill">

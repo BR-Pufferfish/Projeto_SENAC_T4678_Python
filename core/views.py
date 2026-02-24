@@ -105,6 +105,9 @@ class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     permission_required = 'core.add_estoque'
     raise_exception = True
 
+    def get(self, request):
+        return render(request, self.template_name, {'categorias': Categoria.objects.all(), 'pessoas': Pessoa.objects.all()})
+
 
 class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Estoque
