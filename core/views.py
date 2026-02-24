@@ -44,7 +44,7 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     raise_exception = True
 
 
-class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Categoria
     template_name = 'core/editar_categoria.html'
     success_url = reverse_lazy('listar_categoria')
@@ -92,7 +92,7 @@ class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ListarEstoqueView(ListView):
     model = Estoque
-    template_name = 'core/listar_mercadorias.html'
+    template_name = 'core/listar_mercadoria.html'
     context_object_name = 'mercadorias'
 
 
@@ -142,7 +142,7 @@ class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ListarPessoasView(ListView):
     model = Pessoa
-    template_name = 'core/listar_pessoas.html'
+    template_name = 'core/listar_pessoa.html'
     context_object_name = 'pessoas'
 # def listar_pessoas(request):
 
@@ -165,9 +165,9 @@ class ListarPessoasView(ListView):
 
 # def criar_pessoa(request):
 #     return render(request, "core/criar_pessoa.html" ) 
-class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):    
     model = Pessoa
-    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'data_criacao']
+    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
     template_name = 'core/criar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
 
@@ -194,7 +194,7 @@ class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
         pessoa.data_nascimento = request.POST.get('data_nascimento')
         pessoa.contato = request.POST.get('contato')
         pessoa.email = request.POST.get('email')
-        pessoa.data_criacao = request.POST.get('data_criacao')
+       
         pessoa.save()
         return redirect(self.success_url)
 

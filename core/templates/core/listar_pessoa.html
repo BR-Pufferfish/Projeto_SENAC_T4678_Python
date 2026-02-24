@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a href="/home" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for pessoa in pessoas %}
+                        {% for pessoa in pessoas %}
                         <tr>
                             <td>{{ pessoa.id }}</td>
                             <td>{{ pessoa.cpf_cnpj }}</td>
@@ -49,9 +49,9 @@
                             <td>{{ pessoa.email }}</td>
                             <td>
                                 {% if pessoa.tipo == 1 %}
-                                    Cliente
+                                Cliente
                                 {% else %}
-                                    Colaborador
+                                Colaborador
                                 {% endif %}
                             </td>
                         </tr>
@@ -61,14 +61,14 @@
                                 Nenhuma pessoa cadastrada.
                             </td>
                         </tr>
-                        {% endfor %} -->
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
 
             <!-- Botão Nova Pessoa -->
             <div class="text-end mt-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a href="/criar_pessoa" class="btn btn-primary rounded-pill px-4">
                     Cadastrar nova Pessoa
                 </a>
             </div>
