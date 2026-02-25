@@ -31,7 +31,8 @@
         <thead>
           <tr class="fw-bold">
             <th>ID</th>
-            <th>NOME</th>
+            <th>Nome</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -39,10 +40,22 @@
           <tr>
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nome }}</td>
+            <td>
+
+              <a href="{% url 'editar_categoria' categoria.id %}" class="btn btn-warning btn-sm rounded-pill px-3 me-2">
+                Editar
+              </a>
+
+              <a href="{% url 'excluir_categoria' categoria.id %}" class="btn btn-danger btn-sm rounded-pill px-3"
+                onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">
+                Excluir
+              </a>
+
+            </td>
           </tr>
           {% empty %}
           <tr>
-            <td colspan="2">Nenhuma categoria cadastrada.</td>
+            <td colspan="6">Nenhuma categoria cadastrada.</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -50,7 +63,7 @@
 
       <!-- Botão Nova Categoria -->
       <div class="text-end mt-4">
-        <a href="criar_categoria" class="btn btn-primary rounded-pill px-4">
+        <a href="{% url 'criar_categoria' %}" class="btn btn-primary rounded-pill px-4">
           Cadastrar nova categoria
         </a>
       </div>
