@@ -36,6 +36,7 @@
                         <th>Mercadoria</th>
                         <th>Entrada</th>
                         <th>Origem</th>
+                        <th>Ações</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -49,6 +50,17 @@
                         <td>{{ mercadoria.data_entrada }}</td>
                         <td>{{ mercadoria.origem }}</td>
                         <td>
+                            <a href="{% url 'editar_mercadoria' mercadoria.id %}"
+                                class="btn btn-warning btn-sm rounded-pill px-3 me-2">
+                                Editar
+                            </a>
+
+                            <a href="{% url 'excluir_mercadoria' mercadoria.id %}"
+                                class="btn btn-danger btn-sm rounded-pill px-3"
+                                onclick="return confirm('Tem certeza que deseja excluir esta mercadoria?')">
+                                Excluir
+                            </a>
+
                             <a class="btn btn-primary btn-sm rounded-pill">
                                 Despachar
                             </a>
