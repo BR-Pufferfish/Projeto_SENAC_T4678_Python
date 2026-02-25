@@ -21,12 +21,11 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a href="/home" class="btn btn-primary rounded-pill px-4">
+                <a href="{% url 'estoque' %}" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
 
-            <!-- Tabela -->
             <table class="table table-borderless align-middle">
                 <thead>
                     <tr class="fw-bold">
@@ -35,6 +34,7 @@
                         <th>Cliente</th>
                         <th>Mercadoria</th>
                         <th>Entrada</th>
+                        <th>Saldo</th>
                         <th>Origem</th>
                         <th>Ações</th>
                         <th></th>
@@ -47,7 +47,8 @@
                         <td>{{ mercadoria.categoria }}</td>
                         <td>{{ mercadoria.pessoa }}</td>
                         <td>{{ mercadoria.mercadoria }}</td>
-                        <td>{{ mercadoria.data_entrada }}</td>
+                        <td>{{ mercadoria.data_entrada |date:"d/m/Y H:i" }}</td>
+                        <td>{{ mercadoria.saldo }}</td>
                         <td>{{ mercadoria.origem }}</td>
                         <td>
                             <a href="{% url 'editar_mercadoria' mercadoria.id %}"
@@ -78,8 +79,8 @@
 
             <!-- Botão Nova Mercadoria -->
             <div class="text-end mt-4">
-                <a href="/criar_mercadoria" class="btn btn-primary rounded-pill px-4">
-                    Cadastrar nova Mercadoria
+                <a href="{% url 'criar_mercadoria' %}" class="btn btn-primary rounded-pill px-4">
+                    Cadastrar Mercadoria
                 </a>
             </div>
 

@@ -92,24 +92,11 @@ class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Estoque
+    fields = ['categoria', 'pessoa', 'mercadoria', 'origem', 'saldo']
     template_name = 'core/editar_mercadoria.html'
     success_url = reverse_lazy('listar_mercadoria')
     permission_required = 'core.change_estoque'
     raise_exception = True
-
-    def get(self, request, pk):
-        estoque = get_object_or_404(Estoque, pk=pk)
-        return render(request, self.template_name, {'estoque': estoque})
-
-    def post(self, request, pk):
-        estoque = get_object_or_404(Estoque, pk=pk)
-        estoque.categoria_id = request.POST.get('categoria')
-        estoque.pessoa_id = request.POST.get('pessoa')
-        estoque.mercadoria = request.POST.get('mercadoria')
-        estoque.origem = request.POST.get('origem')
-        estoque.saldo = request.POST.get('saldo')
-        estoque.save()
-        return redirect(self.success_url)
 
 
 class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
