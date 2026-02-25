@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, ListView, UpdateView, View
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Pessoa
@@ -9,6 +10,13 @@ from core.models import Categoria, Estoque, Pessoa
 def home(request):
     return render(request, "core/home.html" ) 
 
+
+
+
+class TelaLoginView(LoginView):
+    template_name = 'login.html'
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('estoque')
 
 
 

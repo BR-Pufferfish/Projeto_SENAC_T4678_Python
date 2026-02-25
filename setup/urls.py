@@ -27,6 +27,7 @@ from core.views import tela_login, tela_estoque
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
 from core.views import ListarEstoqueView, NovoEstoqueView, EditarEstoqueView, ExcluirEstoqueView
 from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoasView
+from core.views import TelaLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +35,7 @@ urlpatterns = [
     path('', home),
 
 
-    path('tela_login/', tela_login),
+    path('login/', TelaLoginView.as_view(), name='login'),
     path('tela_estoque/', tela_estoque),
 
 
