@@ -134,12 +134,15 @@ class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
    
 
-class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Pessoa
+    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa'] 
     template_name = 'core/editar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
     permission_required = 'core.change_pessoa'
     raise_exception = True
+    
+    
 
    
 
