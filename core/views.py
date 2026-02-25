@@ -16,15 +16,6 @@ def home(request):
 
 
 
-# def listar_categoria(request):
-#     return render(request, "core/listar_categoria.html" ) 
-# def criar_categoria(request):
-#     return render(request, "core/criar_categoria.html" )
-# def editar_categoria(request):
-#     return render(request, "core/editar_categoria.html" ) 
-# def excluir_categoria(request):
-#     return render(request, "core/excluir_categoria.html" )
-
 
 
 
@@ -80,14 +71,6 @@ class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 
 
-# def listar_mercadorias(request):
-#     return render(request, "core/listar_mercadorias.html" ) 
-# def criar_mercadoria(request):
-#     return render(request, "core/criar_mercadoria.html" ) 
-# def editar_mercadoria(request):
-#     return render(request, "core/editar_mercadoria.html" ) 
-# def excluir_mercadoria(request):
-#     return render(request, "core/excluir_mercadoria.html" ) 
 
 
 class ListarEstoqueView(ListView):
@@ -143,31 +126,16 @@ class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
         return redirect(self.success_url)
 
 
+
+
+
+
 class ListarPessoasView(ListView):
     model = Pessoa
     template_name = 'core/listar_pessoa.html'
     context_object_name = 'pessoas'
-# def listar_pessoas(request):
 
-#     if request.method == "POST":
-#         cpf_cnpj = request.POST.get('cpf_cnpj')
-#         razao_social = request.POST.get('razao_social')
-#         data_nascimento = request.POST.get('data_nascimento')
-#         contato = request.POST.get('contato')
-#         email = request.POST.get('email')
-#         data_criacao = request.POST.get('data_criacao')
-#         Pessoa.objects.get(id=Pessoa.objects.count())
-#         x = Pessoa.objects.get(id=Pessoa.objects.count())
-#         Pessoa.objects.create(cpf_cnpj=cpf_cnpj, razao_social=razao_social, data_nascimento=data_nascimento, contato=contato, email=email, data_criacao=data_criacao)
-#         return redirect('/listar_pessoas')
-#     if request.method == "GET":
-#           print("chegou um get")
-#           categorias = Categoria.objects.all()
-#           messages.success(request,"Pessoa criada com sucesso!")
-#           return render(request, 'core/novo_pessoa.html',{"categorias":categorias})
 
-# def criar_pessoa(request):
-#     return render(request, "core/criar_pessoa.html" ) 
 class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Pessoa
     fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
@@ -185,11 +153,8 @@ class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         print("FORM INVALID ❌")
         print(form.errors)
         return super().form_invalid(form)
-    
-    
 
-# def editar_pessoa(request):
-#     return render(request, "core/editar_pessoa.html" ) 
+
 class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
     model = Pessoa
     template_name = 'core/editar_pessoa.html'
@@ -213,8 +178,7 @@ class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
         pessoa.save()
         return redirect(self.success_url)
 
-# def excluir_pessoa(request):
-#     return render(request, "core/excluir_pessoa.html" )
+
 class ExcluirPessoasView(LoginRequiredMixin, PermissionRequiredMixin, View):
     model = Pessoa
     success_url = reverse_lazy('listar_pessoa')
