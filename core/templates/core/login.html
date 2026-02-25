@@ -12,12 +12,9 @@
 <body>
     <main>
         <h1 style="text-align: center;">Login</h1>
-        <form method="post" action="/admin/login/">
+        <form method="post">
             {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
+            {{ form.as_p }}
             <button type="submit">Login</button>
         </form>
 
