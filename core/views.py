@@ -92,24 +92,11 @@ class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Estoque
+    fields = ['categoria', 'pessoa', 'mercadoria', 'origem', 'saldo']
     template_name = 'core/editar_mercadoria.html'
     success_url = reverse_lazy('listar_mercadoria')
     permission_required = 'core.change_estoque'
     raise_exception = True
-
-    def get(self, request, pk):
-        estoque = get_object_or_404(Estoque, pk=pk)
-        return render(request, self.template_name, {'estoque': estoque})
-
-    def post(self, request, pk):
-        estoque = get_object_or_404(Estoque, pk=pk)
-        estoque.categoria_id = request.POST.get('categoria')
-        estoque.pessoa_id = request.POST.get('pessoa')
-        estoque.mercadoria = request.POST.get('mercadoria')
-        estoque.origem = request.POST.get('origem')
-        estoque.saldo = request.POST.get('saldo')
-        estoque.save()
-        return redirect(self.success_url)
 
 
 class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
@@ -138,20 +125,14 @@ class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Pessoa
     fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa']
     template_name = 'core/criar_pessoa.html'
+
+      
     success_url = reverse_lazy('listar_pessoa')
 
     permission_required = 'core.add_pessoa'
     raise_exception = True
 
-    def form_valid(self, form):
-        print("FORM VALID ✅")
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        print("FORM INVALID ❌")
-        print(form.errors)
-        return super().form_invalid(form)
-
+   
 
 class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
     model = Pessoa
@@ -160,21 +141,7 @@ class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = 'core.change_pessoa'
     raise_exception = True
 
-    def get(self, request, pk):
-        pessoa = get_object_or_404(Pessoa, pk=pk)
-        return render(request, self.template_name, {'pessoa': pessoa})
-
-    def post(self, request, pk):
-        pessoa = get_object_or_404(Pessoa, pk=pk)
-        pessoa.cpf_cnpj = request.POST.get('cpf_cnpj')
-        pessoa.razao_social = request.POST.get('razao_social')
-        pessoa.data_nascimento = '2024-01-01' #request.POST.get('data_nascimento')
-        pessoa.contato = request.POST.get('contato')
-        pessoa.email = request.POST.get('email')
-        
-       
-        pessoa.save()
-        return redirect(self.success_url)
+   
 
 
 class ExcluirPessoasView(LoginRequiredMixin, PermissionRequiredMixin, View):

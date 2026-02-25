@@ -51,6 +51,6 @@ urlpatterns = [
 
     path('listar_pessoa/', ListarPessoasView.as_view(), name='listar_pessoa'),
     path('criar_pessoa/', CriarPessoasView.as_view(), name='criar_pessoa'),
-    path('editar_pessoa/<int:pk>', EditarPessoaView.as_view(), name='editar_pessoa'),
+    path('editar_pessoa/<int:pk>/', EditarPessoaView.as_view(), name='editar_pessoa'),
     path('excluir_pessoa/<int:pk>', ExcluirPessoasView.as_view(), name='excluir_pessoa'),
 ]
