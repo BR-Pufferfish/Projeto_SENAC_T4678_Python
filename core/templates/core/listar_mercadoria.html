@@ -56,11 +56,15 @@
                                 Editar
                             </a>
 
-                            <a href="{% url 'excluir_mercadoria' mercadoria.id %}"
-                                class="btn btn-danger btn-sm rounded-pill px-3"
-                                onclick="return confirm('Tem certeza que deseja excluir esta mercadoria?')">
-                                Excluir
-                            </a>
+                            <!-- Formulario pra apresentar a confirmação de exclusão -->
+                            <form method="post" action="{% url 'excluir_mercadoria' mercadoria.pk %}"
+                                style="display:inline;"
+                                onsubmit="return confirm('Tem certeza que deseja excluir esta mercadoria?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3">
+                                    Excluir
+                                </button>
+                            </form>
 
                             <a class="btn btn-primary btn-sm rounded-pill">
                                 Despachar
