@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a href="/listar_pessoa" class="btn btn-primary rounded-pill px-4">
+                <a href="{% url 'listar_pessoa' %}" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
@@ -62,20 +62,18 @@
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">email</label>
-                        <input type="email"
-                               name="email"
-                               class="form-control"
-                               placeholder="Ex: confer@confer.com"
-                               required>
+                        <input type="email" name="email" class="form-control" placeholder="Ex: confer@confer.com"
+                            required>
 
-                            <input type="date" name="data_nascimento" class="form-control" placeholder="Ex: 01/01/2024" required>
+                        <input type="date" name="data_nascimento" class="form-control" placeholder="Ex: 01/01/2024"
+                            required>
                     </div>
 
                 </div>
 
                 <!-- Botões -->
                 <div class="text-end mt-4">
-                    <a class="btn btn-secondary rounded-pill px-4 me-2">
+                    <a href="{% url 'listar_pessoa' %}" class="btn btn-secondary rounded-pill px-4 me-2">
                         Cancelar
                     </a>
 

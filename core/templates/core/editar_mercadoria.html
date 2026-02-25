@@ -10,7 +10,7 @@
             <img src="{% static 'img/logo.png' %}" width="120">
             <div class="fw-bold">M.K.M</div>
         </div>
-        <h1 class="fw-bold">Cadastrar Mercadoria</h1>
+        <h1 class="fw-bold">Editar Mercadoria</h1>
     </div>
 
     <!-- Fundo Azul -->
@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a href="{% url 'listar_mercadoria' %}" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
@@ -31,32 +31,36 @@
                 {% csrf_token %}
 
                 <div class="row">
+
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">Mercadoria</label>
-                        <input type="text" name="nome" class="form-control" placeholder="Ex: Material de construção"
-                            required>
+                        <label class="form-label fw-bold">Categoria</label>
+                        {{ form.categoria }}
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Cliente</label>
-                        <input type="text" name="cliente" class="form-control" placeholder="Ex: Brafumo" required>
+                        {{ form.pessoa }}
                     </div>
 
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">dtEntrada</label>
-                        <input type="date" name="dt_entrada" class="form-control" required>
+                        <label class="form-label fw-bold">Mercadoria</label>
+                        {{ form.mercadoria }}
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Origem</label>
-                        <input type="text" name="origem" class="form-control" placeholder="Ex: Santa Cruz do Sul - RS"
-                            required>
+                        {{ form.origem }}
                     </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Saldo</label>
+                        {{ form.saldo }}
+                    </div>
+
                 </div>
 
-                <!-- Botões -->
                 <div class="text-end mt-4">
-                    <a class="btn btn-secondary rounded-pill px-4 me-2">
+                    <a href="{% url 'listar_mercadoria' %}" class="btn btn-secondary rounded-pill px-4 me-2">
                         Cancelar
                     </a>
 
