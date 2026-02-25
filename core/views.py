@@ -1,16 +1,11 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-
-from django.views.generic import CreateView, ListView, DeleteView, UpdateView, View
+from django.views.generic import CreateView, ListView, UpdateView, View
 from django.urls import reverse_lazy
-
 from core.models import Categoria, Estoque, Pessoa
 
-# Create your views here.
+
 def home(request):
     return render(request, "core/home.html" ) 
 
@@ -55,15 +50,11 @@ class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateVie
 
 class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
     model = Categoria
-    ## Caso quiséssemos usar um template para confirmar a exclusão, descomentariamos a linha abaixo e criaríamos o template 'core/confirmar_exclusao_categoria.html'
-    # template_name = 'core/confirmar_exclusao_categoria.html'
     success_url = reverse_lazy('listar_categoria')
     permission_required = 'core.delete_categoria'
     raise_exception = True
 
-    # Como não queremos usar um template para confirmar a exclusão, mudamos o mixing para get e não DeleteView
-    # Sobrescrevemos o método get para chamar o método post diretamente, assim a exclusão acontece sem precisar de confirmação.
-    def get(self, request, pk):
+    def get(self, pk):
         categoria = get_object_or_404(Categoria, pk=pk)
         categoria.delete()
         return redirect(self.success_url)
@@ -120,7 +111,7 @@ class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = 'core.delete_estoque'
     raise_exception = True
 
-    def get(self, request, pk):
+    def get(self, pk):
         estoque = get_object_or_404(Estoque, pk=pk)
         estoque.delete()
         return redirect(self.success_url)
@@ -185,7 +176,7 @@ class ExcluirPessoasView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = 'core.delete_pessoa'
     raise_exception = True
 
-    def get(self, request, pk):
+    def get(self, pk):
         pessoa = get_object_or_404(Pessoa, pk=pk)
         pessoa.delete()
         return redirect(self.success_url)

@@ -37,13 +37,8 @@ urlpatterns = [
     path('tela_login/', tela_login),
     path('tela_estoque/', tela_estoque),
 
-    # Exemplo de uso com FBV (Function Based View) 
-    # path('listar_categoria/', listar_categoria),
-    # path('criar_categoria/', criar_categoria),
-    # path('editar_categoria/', editar_categoria),
-    # path('excluir_categoria/', excluir_categoria),
 
-    # Exemplo de uso com CBV (class based view)
+    # Paths usando CBV (class based view)
     path('listar_categoria/', ListarCategoriaView.as_view(), name='listar_categoria'),
     path('criar_categoria/', NovaCategoriaView.as_view(), name='criar_categoria'),
     path('editar_categoria/<int:pk>', EditarCategoriaView.as_view(), name='editar_categoria'),
