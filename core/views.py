@@ -14,9 +14,8 @@ def home(request):
 
 
 class TelaLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'core/login.html'
     redirect_authenticated_user = True
-    success_url = reverse_lazy('estoque')
 
 
 

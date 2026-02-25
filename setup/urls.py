@@ -20,10 +20,7 @@ from django.contrib import admin
 from django.urls import path
 
 from core.views import home
-from core.views import tela_login, tela_estoque
-# from core.views import criar_categoria, editar_categoria, excluir_categoria
-# from core.views import criar_mercadoria, editar_mercadoria, excluir_mercadoria, listar_mercadorias
-# from core.views import criar_pessoa, editar_pessoa, excluir_pessoa, listar_pessoas
+from core.views import tela_estoque
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
 from core.views import ListarEstoqueView, NovoEstoqueView, EditarEstoqueView, ExcluirEstoqueView
 from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoasView
@@ -32,11 +29,11 @@ from core.views import TelaLoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', home),
+    path('', home, name='home'),
 
 
     path('login/', TelaLoginView.as_view(), name='login'),
-    path('tela_estoque/', tela_estoque),
+    path('tela_estoque/', tela_estoque, name='estoque'),
 
 
     # Paths usando CBV (class based view)
