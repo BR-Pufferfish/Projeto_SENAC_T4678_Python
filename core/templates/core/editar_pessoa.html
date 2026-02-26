@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a class="btn btn-primary rounded-pill px-4">
+                <a class="btn btn-primary rounded-pill px-4" href="{% url 'estoque' %}">
                     Voltar
                 </a>
             </div>
@@ -29,52 +29,44 @@
             <!-- Formulário -->
             <form method="post">
                 {% csrf_token %}
-
                 <div class="row">
-
+                
+                    
+                
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">cpfCnpj</label>
-                        <input type="text" name="cpf_cnpj" class="form-control" placeholder="Ex: 11.222.333/4444-55"
-                            required>
+                        {{ form.cpf_cnpj }}
                     </div>
-
+                
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">
-                            Colaborador Cliente
-                        </label>
-                        <select name="tipo" class="form-select" required>
-                            <option value="">Selecione</option>
-                            <option value="0">Colaborador</option>
-                            <option value="1">Cliente</option>
-                        </select>
+                    <label class="form-label fw-bold">
+                        Colaborador Cliente
+                    </label>
+                    {{ form.tipo_pessoa }}
                     </div>
-
+                
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">razaoSocial</label>
-                        <input type="text" name="razao_social" class="form-control" placeholder="Ex: Brafumo" required>
+                        {{ form.razao_social }}
                     </div>
-
+                    
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">contato</label>
-                        <input type="text" name="contato" class="form-control" placeholder="Ex: (55) 123456789"
-                            required>
+                        {{ form.contato }}
                     </div>
-
+                    
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Ex: confer@confer.com"
-                            required>
+                        {{ form.email }}
                     </div>
-
                 </div>
-
                 <!-- Botões -->
                 <div class="text-end mt-4">
-                    <a class="btn btn-secondary rounded-pill px-4 me-2">
+                    <a class="btn btn-secondary rounded-pill px-4 me-2" href="{% url 'listar_pessoa' %}">
                         Cancelar
                     </a>
 
-                    <button type="submit" class="btn btn-primary rounded-pill px-4">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4" >
                         Salvar
                     </button>
                 </div>

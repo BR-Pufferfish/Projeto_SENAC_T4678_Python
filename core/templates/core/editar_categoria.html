@@ -21,23 +21,25 @@
 
          <!-- Botão Voltar -->
          <div class="mb-4">
-            <a class="btn btn-primary rounded-pill px-4">
+            <a href="{% url 'listar_categoria' %}" class="btn btn-primary rounded-pill px-4">
                Voltar
             </a>
          </div>
 
-         <!-- Formulário -->
+
          <form method="post">
             {% csrf_token %}
 
-            <div class="mb-4 col-8">
-               <label class="form-label fw-bold">NOME</label>
-               <input type="text" name="nome" class="form-control" value="{{ categoria.nome }}" required>
+            <div class="row">
+
+               <div class="col-md-6 mb-4">
+                  <label class="form-label fw-bold">Categoria</label>
+                  {{ form.nome }}
+               </div>
             </div>
 
-            <!-- Botões -->
             <div class="text-end mt-4">
-               <a class="btn btn-secondary rounded-pill px-4 me-2">
+               <a href="{% url 'listar_categoria' %}" class="btn btn-secondary rounded-pill px-4 me-2">
                   Cancelar
                </a>
 
@@ -47,6 +49,10 @@
             </div>
 
          </form>
+
+
+
+
 
       </div>
    </div>

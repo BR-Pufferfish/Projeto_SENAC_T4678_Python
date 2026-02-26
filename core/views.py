@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.views.generic import CreateView, ListView, UpdateView, View
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Pessoa
 
@@ -37,34 +37,24 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     raise_exception = True
 
 
+from django.views.generic import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
 class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Categoria
+    fields = ['nome']  # coloque aqui os campos que existem no model
     template_name = 'core/editar_categoria.html'
     success_url = reverse_lazy('listar_categoria')
     permission_required = 'core.change_categoria'
     raise_exception = True
 
-    def get(self, request, pk):
-        categoria = get_object_or_404(Categoria, pk=pk)
-        return render(request, self.template_name, {'categoria': categoria})
 
-    def post(self, request, pk):
-        categoria = get_object_or_404(Categoria, pk=pk)
-        categoria.nome = request.POST.get('nome')
-        categoria.save()
-        return redirect(self.success_url)
-
-
-class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class ExcluirCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Categoria
     success_url = reverse_lazy('listar_categoria')
     permission_required = 'core.delete_categoria'
     raise_exception = True
-
-    def get(self, pk):
-        categoria = get_object_or_404(Categoria, pk=pk)
-        categoria.delete()
-        return redirect(self.success_url)
 
 
 
@@ -99,16 +89,11 @@ class EditarEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
     raise_exception = True
 
 
-class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class ExcluirEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Estoque
     success_url = reverse_lazy('listar_mercadoria')
     permission_required = 'core.delete_estoque'
     raise_exception = True
-
-    def get(self, pk):
-        estoque = get_object_or_404(Estoque, pk=pk)
-        estoque.delete()
-        return redirect(self.success_url)
 
 
 
@@ -134,12 +119,15 @@ class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
    
 
-class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Pessoa
+    fields = ['cpf_cnpj', 'razao_social', 'data_nascimento', 'contato', 'email', 'tipo_pessoa'] 
     template_name = 'core/editar_pessoa.html'
     success_url = reverse_lazy('listar_pessoa')
     permission_required = 'core.change_pessoa'
     raise_exception = True
+    
+    
 
    
 
