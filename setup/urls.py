@@ -23,7 +23,7 @@ from core.views import home
 from core.views import tela_estoque
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
 from core.views import ListarEstoqueView, NovoEstoqueView, EditarEstoqueView, ExcluirEstoqueView
-from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoasView
+from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoaView
 from core.views import TelaLoginView
 
 urlpatterns = [
@@ -52,5 +52,5 @@ urlpatterns = [
     path('listar_pessoa/', ListarPessoasView.as_view(), name='listar_pessoa'),
     path('criar_pessoa/', CriarPessoasView.as_view(), name='criar_pessoa'),
     path('editar_pessoa/<int:pk>/', EditarPessoaView.as_view(), name='editar_pessoa'),
-    path('excluir_pessoa/<int:pk>', ExcluirPessoasView.as_view(), name='excluir_pessoa'),
+    path('excluir_pessoa/<int:pk>', ExcluirPessoaView.as_view(), name='excluir_pessoa'),
 ]

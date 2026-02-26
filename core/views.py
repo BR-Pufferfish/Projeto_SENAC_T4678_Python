@@ -1,16 +1,20 @@
-from django.shortcuts import redirect, render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Pessoa
+
+
+
+
 
 
 def home(request):
     return render(request, "core/home.html" ) 
 
-
+def tela_estoque(request):
+    return render(request, "core/estoque.html" ) 
 
 
 class TelaLoginView(LoginView):
@@ -37,13 +41,9 @@ class NovaCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     raise_exception = True
 
 
-from django.views.generic import UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-
 class EditarCategoriaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Categoria
-    fields = ['nome']  # coloque aqui os campos que existem no model
+    fields = ['nome']
     template_name = 'core/editar_categoria.html'
     success_url = reverse_lazy('listar_categoria')
     permission_required = 'core.change_categoria'
@@ -117,7 +117,6 @@ class CriarPessoasView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     permission_required = 'core.add_pessoa'
     raise_exception = True
 
-   
 
 class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Pessoa
@@ -126,27 +125,10 @@ class EditarPessoaView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('listar_pessoa')
     permission_required = 'core.change_pessoa'
     raise_exception = True
-    
-    
-
-   
 
 
-class ExcluirPessoasView(LoginRequiredMixin, PermissionRequiredMixin, View):
+class ExcluirPessoaView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Pessoa
     success_url = reverse_lazy('listar_pessoa')
     permission_required = 'core.delete_pessoa'
     raise_exception = True
-
-    def get(self, pk):
-        pessoa = get_object_or_404(Pessoa, pk=pk)
-        pessoa.delete()
-        return redirect(self.success_url)
-
-
-
-def tela_login(request):
-    return render(request, "core/login.html" ) 
-
-def tela_estoque(request):
-    return render(request, "core/estoque.html" ) 

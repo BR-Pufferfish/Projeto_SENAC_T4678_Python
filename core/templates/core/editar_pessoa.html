@@ -10,7 +10,7 @@
             <!-- <img src="{% static 'img/logo.png' %}" width="120"> -->
             <div class="fw-bold">M.K.M</div>
         </div>
-        <h1 class="fw-bold">Cadastro de Pessoas</h1>
+        <h1 class="fw-bold">Editar Pessoa</h1>
     </div>
 
     <!-- Fundo Azul -->
@@ -21,7 +21,7 @@
 
             <!-- Botão Voltar -->
             <div class="mb-4">
-                <a class="btn btn-primary rounded-pill px-4" href="{% url 'estoque' %}">
+                <a href="{% url 'listar_pessoa' %}" class="btn btn-primary rounded-pill px-4">
                     Voltar
                 </a>
             </div>
@@ -30,35 +30,45 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="row">
-                
-                    
-                
+
+
+
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">cpfCnpj</label>
-                        {{ form.cpf_cnpj }}
+                        <label class="form-label fw-bold">CPF / CNPJ</label>
+                        <input type="text" value="{{ form.cpf_cnpj.value }}" name="cpf_cnpj" class="form-control"
+                            required>
                     </div>
-                
+
                     <div class="col-md-6 mb-4">
-                    <label class="form-label fw-bold">
-                        Colaborador Cliente
-                    </label>
-                    {{ form.tipo_pessoa }}
+                        <label class="form-label fw-bold">
+                            Função
+                        </label>
+                        {{ form.tipo_pessoa }}
                     </div>
-                
+
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">razaoSocial</label>
-                        {{ form.razao_social }}
+                        <label class="form-label fw-bold">Nome / Razão Social</label>
+                        <input type="text" value="{{ form.razao_social.value }}" name="razao_social"
+                            class="form-control" required>
                     </div>
-                    
+
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">contato</label>
-                        {{ form.contato }}
+                        <label class="form-label fw-bold">Contato</label>
+                        <input type="text" value="{{ form.contato.value }}" name="contato" class="form-control"
+                            required>
                     </div>
-                    
+
                     <div class="col-md-6 mb-4">
-                        <label class="form-label fw-bold">email</label>
-                        {{ form.email }}
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="email" value="{{ form.email.value }}" name="email" class="form-control" required>
                     </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Data de Nascimento</label>
+                        <input type="date" value="{{ form.data_nascimento.value }}" name="data_nascimento"
+                            class="form-control" required>
+                    </div>
+
                 </div>
                 <!-- Botões -->
                 <div class="text-end mt-4">
@@ -66,7 +76,7 @@
                         Cancelar
                     </a>
 
-                    <button type="submit" class="btn btn-primary rounded-pill px-4" >
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">
                         Salvar
                     </button>
                 </div>

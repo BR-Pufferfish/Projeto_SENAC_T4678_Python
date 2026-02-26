@@ -32,11 +32,11 @@
                     <thead>
                         <tr class="fw-bold">
                             <th>ID</th>
-                            <th>cpfCnpj</th>
-                            <th>razaoSocial</th>
-                            <th>contato</th>
-                            <th>email</th>
-                            <th>Colaborador / Cliente</th>
+                            <th>CPF / CNPJ</th>
+                            <th>Nome / Razão</th>
+                            <th>Contato</th>
+                            <th>Email</th>
+                            <th>Função</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -51,7 +51,7 @@
 
                             <!-- Tipo -->
                             <td>
-                                {% if pessoa.tipo == 1 %}
+                                {% if pessoa.tipo_pessoa == 'Cliente' %}
                                 Cliente
                                 {% else %}
                                 Colaborador
@@ -65,11 +65,15 @@
                                     Editar
                                 </a>
 
-                                <a href="{% url 'excluir_pessoa' pessoa.id %}"
-                                    class="btn btn-danger btn-sm rounded-pill px-3"
-                                    onclick="return confirm('Tem certeza que deseja excluir esta pessoa?')">
-                                    Excluir
-                                </a>
+                                <!-- Formulario pra apresentar a confirmação de exclusão -->
+                                <form method="post" action="{% url 'excluir_pessoa' pessoa.pk %}"
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Tem certeza que deseja excluir esta pessoa?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3">
+                                        Excluir
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         {% empty %}
@@ -84,10 +88,9 @@
                 </table>
             </div>
 
-            <!-- Botão Nova Pessoa -->
             <div class="text-end mt-4">
-                <a href="/criar_pessoa" class="btn btn-primary rounded-pill px-4">
-                    Cadastrar nova Pessoa
+                <a href="{% url 'criar_pessoa' %}" class="btn btn-primary rounded-pill px-4">
+                    Cadastrar Pessoa
                 </a>
             </div>
 
