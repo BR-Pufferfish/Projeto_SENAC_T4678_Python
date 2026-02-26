@@ -17,7 +17,7 @@
     <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
 
         <!-- Card Central -->
-        <div class="bg-light p-5 rounded shadow" style="width: 1000px;">
+        <div class="bg-light p-5 rounded shadow" style="width: 90%;">
 
             <!-- Botão Voltar -->
             <div class="mb-4">
@@ -60,12 +60,12 @@
 
                             <!-- Ações -->
                             <td>
-                                <a href="{% url 'editar_pessoa' pessoa.id %}"
+                                <a href="{% url 'editar_pessoa' pessoa.id %}" style="margin: 6px;"
                                     class="btn btn-warning btn-sm rounded-pill px-3 me-2">
                                     Editar
                                 </a>
 
-                                <a href="{% url 'excluir_pessoa' pessoa.id %}"
+                                <a href="{% url 'excluir_pessoa' pessoa.id %}" style="margin: 6px;"
                                     class="btn btn-danger btn-sm rounded-pill px-3"
                                     onclick="return confirm('Tem certeza que deseja excluir esta pessoa?')">
                                     Excluir

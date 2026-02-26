@@ -17,7 +17,7 @@
   <div class="bg-primary d-flex justify-content-center align-items-center" style="height: 70vh;">
 
     <!-- Card central -->
-    <div class="bg-light p-5 rounded shadow" style="width: 700px;">
+    <div class="bg-light p-5 rounded shadow" style="width: 90%;">
 
       <!-- Botão Voltar -->
       <div class="mb-4">
@@ -42,11 +42,13 @@
             <td>{{ categoria.nome }}</td>
             <td>
 
-              <a href="{% url 'editar_categoria' categoria.id %}" class="btn btn-warning btn-sm rounded-pill px-3 me-2">
+              <a href="{% url 'editar_categoria' categoria.id %}" style="margin: 6px;"
+                class="btn btn-warning btn-sm rounded-pill px-3 me-2">
                 Editar
               </a>
 
-              <a href="{% url 'excluir_categoria' categoria.id %}" class="btn btn-danger btn-sm rounded-pill px-3"
+              <a href="{% url 'excluir_categoria' categoria.id %}" style="margin: 6px;"
+                class="btn btn-danger btn-sm rounded-pill px-3"
                 onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">
                 Excluir
               </a>
