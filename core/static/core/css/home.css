@@ -46,16 +46,22 @@ header div {
     top: 30px;
     right: 60px;
 }
-
-/* BOTÃO LOGIN */
-.button_login {
-    background: transparent;
-    border: none;
-    color: rgb(251, 251, 251);
+.button_L {
+    padding: 12px 28px;
     font-size: 18px;
     font-weight: 600;
+    color: white;
+    background: #1e6fa8;
+    border: none;
+    border-radius: 60px;
     cursor: pointer;
+    transition: 0.25s ease;
 }
+.button_L:hover {
+    background: #155d8f;
+    transform: translateY(-2px);
+}
+
 
 /* TÍTULO */
 header h1 {
@@ -70,7 +76,7 @@ header h1 {
 header>button:last-child {
     width: fit-content;
     padding: 22px 48px;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
     color: white;
     background: #1e6fa8;
