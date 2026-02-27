@@ -1,21 +1,20 @@
-
 {% extends 'core/base.html' %}
 
 <!DOCTYPE html>
-    {% block header %}
-    
-    
-            
-    
-        
-        <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Estoque</h1>
-   
-    {% endblock %}
+{% block header %}
+
+
+
+
+
+<h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Estoque</h1>
+
+{% endblock %}
 {% block content %}
 
 <div class="container-fluid p-0">
 
-   
+
 
     <div class="bg-primary d-flex justify-content-center align-items-center" style="height: 70vh;">
         <div class="bg-light p-5 rounded shadow text-center" style="width: 600px;">
@@ -30,6 +29,10 @@
 
                 <a href="{% url 'listar_mercadoria' %}" class="btn btn-primary rounded-pill">
                     Mercadorias
+                </a>
+
+                <a href="{% url 'listar_mercadoria_despachada' %}" class="btn btn-primary rounded-pill">
+                    Mercadorias Despachadas
                 </a>
 
                 <a href="{% url 'listar_categoria' %}" class="btn btn-primary rounded-pill">

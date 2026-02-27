@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from core.models import Categoria, Estoque, Pessoa
+from core.models import Categoria, Estoque, Movimentacoes, Pessoa
 
 
 
@@ -131,4 +131,23 @@ class ExcluirPessoaView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView)
     model = Pessoa
     success_url = reverse_lazy('listar_pessoa')
     permission_required = 'core.delete_pessoa'
+    raise_exception = True
+
+
+
+
+
+
+class ListarMercadoriaDespachadaView(ListView):
+    model = Movimentacoes
+    template_name = 'core/listar_mercadoria_despachada.html'
+    context_object_name = 'movimentacoes'
+
+
+class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Movimentacoes
+    fields = ['status']
+    template_name = 'core/finalizar_movimentacao.html'
+    success_url = reverse_lazy('listar_mercadoria_despachada')
+    permission_required = 'core.change_movimentacoes'
     raise_exception = True
