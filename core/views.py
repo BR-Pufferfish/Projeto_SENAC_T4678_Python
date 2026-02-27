@@ -138,10 +138,19 @@ class ExcluirPessoaView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView)
 
 
 
-class ListarMercadoriaDespachadaView(ListView):
+class ListarMovimentacaoView(ListView):
     model = Movimentacoes
     template_name = 'core/listar_mercadoria_despachada.html'
     context_object_name = 'movimentacoes'
+
+
+class CriarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Movimentacoes
+    fields = ['pessoa', 'estoque', 'quantidade', 'destino', 'status']
+    template_name = 'core/editar_mercadoria_despachada.html'
+    success_url = reverse_lazy('listar_mercadoria_despachada')
+    permission_required = 'core.add_movimentacoes'
+    raise_exception = True
 
 
 class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, View):
