@@ -17,21 +17,23 @@ Including another URLconf
 from turtle import home
 
 from django.contrib import admin
-from django.urls import path
-
+from django.contrib.auth.views import LogoutView
+from django.urls import path, reverse_lazy
 from core.views import home
 from core.views import tela_estoque
 from core.views import ListarCategoriaView, NovaCategoriaView, EditarCategoriaView, ExcluirCategoriaView
 from core.views import ListarEstoqueView, NovoEstoqueView, EditarEstoqueView, ExcluirEstoqueView
 from core.views import CriarPessoasView, ListarPessoasView,EditarPessoaView, ExcluirPessoaView
 from core.views import TelaLoginView
-from core.views import ListarMovimentacaoView, CriarMovimentacaoView, FinalizarMovimentacaoView
-from core.views import DespacharView
+from core.views import ListarMovimentacaoView, FinalizarMovimentacaoView, DespacharView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('logout/', LogoutView.as_view(next_page=reverse_lazy('login')),name='logout'),
 
     path('', home, name='home'),
+
+
 
 
     path('login/', TelaLoginView.as_view(), name='login'),
@@ -58,8 +60,6 @@ urlpatterns = [
 
 
     path('listar_mercadoria_despachada/', ListarMovimentacaoView.as_view(), name='listar_mercadoria_despachada'),
-    # path('criar_movimentacao/<int:pk>/', CriarMovimentacaoView.as_view(), name='criar_movimentacao'),
-    path('finalizar_mercadoria_despachada/<int:pk>/', FinalizarMovimentacaoView.as_view(), name='finalizar_mercadoria_despachada'),
-
     path('despachar/<int:pk>/', DespacharView.as_view(), name='despachar'),
+    path('finalizar_mercadoria_despachada/<int:pk>/', FinalizarMovimentacaoView.as_view(), name='finalizar_mercadoria_despachada'),
 ]

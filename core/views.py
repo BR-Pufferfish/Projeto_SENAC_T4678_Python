@@ -4,7 +4,6 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Movimentacoes, Pessoa
-from django.db import transaction
 
 
 
@@ -21,8 +20,6 @@ def tela_estoque(request):
 class TelaLoginView(LoginView):
     template_name = 'core/login.html'
     redirect_authenticated_user = True
-
-
 
 
 
@@ -145,15 +142,6 @@ class ListarMovimentacaoView(ListView):
     context_object_name = 'movimentacoes'
 
 
-class CriarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    model = Movimentacoes
-    fields = ['pessoa', 'estoque', 'quantidade', 'destino', 'status']
-    template_name = 'core/editar_mercadoria_despachada.html'
-    success_url = reverse_lazy('listar_mercadoria_despachada')
-    permission_required = 'core.add_movimentacoes'
-    raise_exception = True
-
-
 class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = 'core.change_movimentacoes'
     raise_exception = True
@@ -167,8 +155,6 @@ class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, Vie
 
         return redirect('listar_mercadoria_despachada')
     
-
-
 
 class DespacharView(CreateView):
     model = Movimentacoes
