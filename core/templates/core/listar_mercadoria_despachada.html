@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% block header %}
+
+<h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Mercadorias
+    Despachadas
+</h1>
+
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid p-0">
+
+    <!-- Header -->
+
+
+    <!-- Fundo Azul -->
+    <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+
+        <!-- Card central -->
+        <div class="bg-light p-5 rounded shadow" style="width: 95%;">
+
+            <!-- Botão Voltar -->
+            <div class="mb-4">
+                <a href="{% url 'estoque' %}" class="btn btn-primary rounded-pill px-4">
+                    Voltar
+                </a>
+            </div>
+
+            <table class="table table-borderless align-middle">
+                <thead>
+                    <tr class="fw-bold">
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Mercadoria</th>
+                        <th>Quantidade</th>
+                        <th>Saída</th>
+                        <th>Destino</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movimentacao in movimentacoes %}
+                    <tr>
+                        <td>{{ movimentacao.id }}</td>
+                        <td>{{ movimentacao.pessoa }}</td>
+                        <td>{{ movimentacao.estoque.mercadoria }}</td>
+                        <td>{{ movimentacao.quantidade }}</td>
+                        <td>{{ movimentacao.dtSaida |date:"d/m/Y H:i" }}</td>
+                        <td>{{ movimentacao.destino }}</td>
+                        <td>
+                            <a href="{% url 'finalizar_movimentacao' movimentacao.id %}"
+                                class="btn btn-sm btn-primary rounded-pill px-3">
+                                Concluir
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

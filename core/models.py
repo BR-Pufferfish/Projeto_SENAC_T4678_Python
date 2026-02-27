@@ -11,7 +11,7 @@ class Categoria(models.Model):
 class Pessoa(models.Model):
     cpf_cnpj = models.CharField(max_length=14)
     razao_social = models.CharField(max_length=100)
-    data_nascimento = models.DateTimeField()
+    data_nascimento = models.DateField()
     contato = models.CharField(max_length=11)
     email = models.EmailField(max_length=100)
     OPCOES_PESSOA = [
