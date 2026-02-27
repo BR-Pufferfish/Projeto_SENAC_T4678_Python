@@ -49,10 +49,24 @@
                         <td>{{ movimentacao.dtSaida |date:"d/m/Y H:i" }}</td>
                         <td>{{ movimentacao.destino }}</td>
                         <td>
+                            <span class="badge 
+                                {% if movimentacao.status == 'Transportando' %}
+                                    bg-warning
+                                {% else %}
+                                    bg-success
+                                {% endif %}
+                                ">
+                                {{ movimentacao.status }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {% if movimentacao.status == 'Transportando' %}
                             <a href="{% url 'finalizar_movimentacao' movimentacao.id %}"
                                 class="btn btn-sm btn-primary rounded-pill px-3">
                                 Concluir
                             </a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}

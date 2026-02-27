@@ -41,19 +41,6 @@
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nome }}</td>
             <td>
-<<<<<<< HEAD
-
-              <a href="{% url 'editar_categoria' categoria.id %}" style="margin: 6px;"
-                class="btn btn-warning btn-sm rounded-pill px-3 me-2">
-                Editar
-              </a>
-
-              <a href="{% url 'excluir_categoria' categoria.id %}" style="margin: 6px;"
-                class="btn btn-danger btn-sm rounded-pill px-3"
-                onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">
-                Excluir
-              </a>
-=======
               <a href="{% url 'editar_categoria' categoria.id %}" class="btn btn-warning btn-sm rounded-pill px-3 me-2">
                 Editar
               </a>
@@ -66,7 +53,6 @@
                   Excluir
                 </button>
               </form>
->>>>>>> a3bad30e13750883a1d0cae6fcccf059773f6947
 
             </td>
           </tr>

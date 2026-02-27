@@ -2,7 +2,8 @@
 {% block header %}
 <div>
 
-    <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Editar Mercadoria
+    <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Despachar
+        Mercadoria
     </h1>
 </div>
 
@@ -10,13 +11,7 @@
 {% block content %}
 
 <div class="container-fluid p-0">
-
-   
-
-    <!-- Fundo Azul -->
     <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-
-        <!-- Card Central -->
         <div class="bg-light p-5 rounded shadow" style="width: 800px;">
 
             <!-- Botão Voltar -->
@@ -26,40 +21,40 @@
                 </a>
             </div>
 
-            <!-- Formulário -->
             <form method="post">
                 {% csrf_token %}
-
                 <div class="row">
-
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Categoria</label>
                         {{ form.categoria }}
+                        <!-- <input type="text" name="categoria" class="form-control" value="{{ form.categoria.value }}"
+                            readonly> -->
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Cliente</label>
                         {{ form.pessoa }}
+                        <!-- <input type="text" name="pessoa" class="form-control" value="{{ form.pessoa.value }}"
+                            readonly> -->
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Mercadoria</label>
                         <input type="text" name="mercadoria" class="form-control" value="{{ form.mercadoria.value }}"
-                            required>
+                            readonly>
 
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Origem</label>
-                        <input type="text" name="origem" class="form-control" value="{{ form.origem.value }}" required>
+                        <input type="text" name="origem" class="form-control" value="{{ form.origem.value }}" readonly>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Saldo</label>
-                        <input type="number" name="saldo" class="form-control" value="{{ form.saldo.value }}" required>
+                        <input type="number" name="saldo" class="form-control" value="{{ form.saldo.value }}" readonly>
                     </div>
                 </div>
-
         </div>
 
         <div class="text-end mt-4">
@@ -68,7 +63,7 @@
             </a>
 
             <button type="submit" class="btn btn-primary rounded-pill px-4">
-                Salvar
+                Despachar
             </button>
         </div>
 
