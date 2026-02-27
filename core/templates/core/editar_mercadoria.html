@@ -44,35 +44,38 @@
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Mercadoria</label>
-                        {{ form.mercadoria }}
+                        <input type="text" name="mercadoria" class="form-control" value="{{ form.mercadoria.value }}"
+                            required>
+
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Origem</label>
-                        {{ form.origem }}
+                        <input type="text" name="origem" class="form-control" value="{{ form.origem.value }}" required>
                     </div>
 
                     <div class="col-md-6 mb-4">
                         <label class="form-label fw-bold">Saldo</label>
-                        {{ form.saldo }}
+                        <input type="number" name="saldo" class="form-control" value="{{ form.saldo.value }}" required>
                     </div>
-
                 </div>
-
-                <div class="text-end mt-4">
-                    <a href="{% url 'listar_mercadoria' %}" class="btn btn-secondary rounded-pill px-4 me-2">
-                        Cancelar
-                    </a>
-
-                    <button type="submit" class="btn btn-primary rounded-pill px-4">
-                        Salvar
-                    </button>
-                </div>
-
-            </form>
 
         </div>
+
+        <div class="text-end mt-4">
+            <a href="{% url 'listar_mercadoria' %}" class="btn btn-secondary rounded-pill px-4 me-2">
+                Cancelar
+            </a>
+
+            <button type="submit" class="btn btn-primary rounded-pill px-4">
+                Salvar
+            </button>
+        </div>
+
+        </form>
+
     </div>
+</div>
 
 </div>
 

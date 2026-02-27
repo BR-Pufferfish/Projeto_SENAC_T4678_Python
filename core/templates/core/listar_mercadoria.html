@@ -1,8 +1,8 @@
-
 {% extends 'core/base.html' %}
 {% block header %}
 
-<h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Mercadorias</h1>
+<h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Mercadorias
+</h1>
 
 {% endblock %}
 {% block content %}
@@ -64,7 +64,8 @@
                                 </button>
                             </form>
 
-                            <a style="margin:6px;" class="btn btn-primary btn-sm rounded-pill">
+                            <a href="{% url 'finalizar_movimentacao' mercadoria.id %}" style="margin:6px;"
+                                class="btn btn-primary btn-sm rounded-pill">
                                 Despachar
                             </a>
                         </td>
