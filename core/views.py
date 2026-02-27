@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Movimentacoes, Pessoa
+from django.db import transaction
 
 
 
@@ -165,3 +166,30 @@ class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, Vie
             movimentacao.save()
 
         return redirect('listar_mercadoria_despachada')
+    
+
+
+
+class DespacharView(CreateView):
+    model = Movimentacoes
+    fields = ['destino']
+    template_name = 'core/despachar.html'
+    success_url = reverse_lazy('listar_mercadoria_despachada')
+
+    def dispatch(self, request, *args, **kwargs):
+        self.estoque = get_object_or_404(Estoque, pk=self.kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['estoque'] = self.estoque
+        return context
+
+    def form_valid(self, form):
+        form.instance.estoque = self.estoque
+        form.instance.quantidade = self.estoque.saldo
+
+        self.estoque.status = 'Despachado'
+        self.estoque.save()
+
+        return super().form_valid(form)

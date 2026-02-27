@@ -32,6 +32,14 @@ class Estoque(models.Model):
     data_entrada = models.DateTimeField(auto_now_add=True)
     origem = models.CharField(max_length=100)
     saldo = models.IntegerField()
+    status = models.CharField(
+    max_length=20,
+    choices=[
+        ('Disponivel', 'Disponível'),
+        ('Despachado', 'Despachado'),
+    ],
+    default='Disponivel'
+)
 
     def __str__(self):
         return f"{self.mercadoria} - {self.saldo}"

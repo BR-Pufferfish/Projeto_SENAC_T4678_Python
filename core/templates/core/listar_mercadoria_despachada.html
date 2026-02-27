@@ -62,7 +62,7 @@
 
                         <td>
                             {% if movimentacao.status == 'Transportando' %}
-                            <a href="{% url 'finalizar_movimentacao' movimentacao.id %}"
+                            <a href="{% url 'finalizar_mercadoria_despachada' movimentacao.id %}"
                                 class="btn btn-sm btn-primary rounded-pill px-3">
                                 Concluir
                             </a>

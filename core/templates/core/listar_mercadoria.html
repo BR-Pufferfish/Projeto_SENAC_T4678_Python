@@ -49,6 +49,7 @@
                         <td>{{ mercadoria.saldo }}</td>
                         <td>{{ mercadoria.origem }}</td>
                         <td>
+                            {% if mercadoria.status == 'Disponivel' %}
                             <a href="{% url 'editar_mercadoria' mercadoria.id %}" style="margin: 6px;"
                                 class="btn btn-warning btn-sm rounded-pill px-3 me-2">
                                 Editar
@@ -64,10 +65,14 @@
                                 </button>
                             </form>
 
-                            <a href="{% url 'editar_movimentacao' mercadoria.id %}" style="margin:6px;"
-                                class="btn btn-primary btn-sm rounded-pill">
+                            <a href="{% url 'despachar' mercadoria.id %}" class="btn btn-primary btn-sm">
                                 Despachar
                             </a>
+
+                            {% else %}
+                            <span class="badge bg-secondary">Despachado</span>
+                            {% endif %}
+
                         </td>
                     </tr>
                     {% empty %}

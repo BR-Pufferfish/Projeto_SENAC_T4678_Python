@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% block header %}
+<div>
+
+    <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Despachar
+        Mercadoria
+    </h1>
+</div>
+
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid p-0">
+    <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="bg-light p-5 rounded shadow" style="width: 800px;">
+
+            <!-- Botão Voltar -->
+            <div class="mb-4">
+                <a href="{% url 'listar_mercadoria' %}" class="btn btn-primary rounded-pill px-4">
+                    Voltar
+                </a>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Categoria</label>
+                        <p class="form-control-plaintext">
+                            {{ estoque.categoria }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Mercadoria</label>
+                        <p class="form-control-plaintext">
+                            {{ estoque.mercadoria }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Origem</label>
+                        <p class="form-control-plaintext">
+                            {{ estoque.origem }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-bold">Saldo Disponível</label>
+                        <p class="form-control-plaintext">
+                            {{ estoque.saldo }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label fw-bold">Destino</label>
+                        {{ form.destino }}
+                    </div>
+
+                </div>
+
+                <div class="text-end mt-4">
+                    <a href="{% url 'listar_mercadoria' %}" class="btn btn-secondary rounded-pill px-4 me-2">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">
+                        Confirmar Despacho
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
