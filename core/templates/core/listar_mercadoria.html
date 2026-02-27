@@ -1,8 +1,12 @@
 {% extends 'core/base.html' %}
 {% block header %}
 
-<h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Mercadorias
-</h1>
+<div class="container-fluid p-0 mt-5">
+
+    <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Mercadorias
+    </h1>
+</div>
+
 
 {% endblock %}
 {% block content %}
@@ -12,11 +16,11 @@
 
 
 
-
-    <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    
+    <div class="bg-primary d-flex justify-content-center align-items-center" style="max-height: fit-content;">
 
         <!-- Card central -->
-        <div class="bg-light p-5 rounded shadow" style="width: 95%;">
+    <div class="bg-light p-5 rounded shadow m-5" style="width: 95%;">
 
             <!-- Botão Voltar -->
             <div class="mb-4">

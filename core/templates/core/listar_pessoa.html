@@ -1,10 +1,11 @@
 {% extends 'core/base.html' %}
 {% block header %}
-<div>
+<div class="container-fluid p-0 mt-5">
 
     <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Pessoas
     </h1>
 </div>
+
 
 {% endblock %}
 {% block content %}
@@ -14,10 +15,10 @@
     
 
     <!-- Fundo Azul -->
-    <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="bg-primary d-flex justify-content-center align-items-center" style="max-height: fit-content;">
 
         <!-- Card Central -->
-        <div class="bg-light p-5 rounded shadow" style="width: 90%;">
+         <div class="bg-light p-5 rounded shadow m-5" style="width: 95%;">
 
             <!-- Botão Voltar -->
             <div class="mb-4">
