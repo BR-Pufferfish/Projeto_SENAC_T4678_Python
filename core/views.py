@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
 from core.models import Categoria, Estoque, Movimentacoes, Pessoa
 
@@ -144,10 +144,15 @@ class ListarMercadoriaDespachadaView(ListView):
     context_object_name = 'movimentacoes'
 
 
-class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
-    model = Movimentacoes
-    fields = ['status']
-    template_name = 'core/finalizar_movimentacao.html'
-    success_url = reverse_lazy('listar_mercadoria_despachada')
+class FinalizarMovimentacaoView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = 'core.change_movimentacoes'
     raise_exception = True
+
+    def get(self, request, pk):
+        movimentacao = get_object_or_404(Movimentacoes, pk=pk)
+
+        if movimentacao.status == 'Transportando':
+            movimentacao.status = 'Entregue'
+            movimentacao.save()
+
+        return redirect('listar_mercadoria_despachada')
