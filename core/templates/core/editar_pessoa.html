@@ -1,17 +1,18 @@
+
 {% extends 'core/base.html' %}
-{% load static %}
+{% block header %}
+<div>
+
+    <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Editar Cadastro de Pessoas 
+    </h1>
+</div>
+
+{% endblock %}
 {% block content %}
 
 <div class="container-fluid p-0">
 
-    <!-- Header -->
-    <div class="bg-light py-4 text-center position-relative">
-        <div class="position-absolute top-0 start-0 p-3">
-            <!-- <img src="{% static 'img/logo.png' %}" width="120"> -->
-            <div class="fw-bold">M.K.M</div>
-        </div>
-        <h1 class="fw-bold">Editar Pessoa</h1>
-    </div>
+   
 
     <!-- Fundo Azul -->
     <div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 70vh;">
