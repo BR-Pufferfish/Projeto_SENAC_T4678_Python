@@ -1,23 +1,23 @@
 {% extends 'core/base.html' %}
-{% load static %}
+{% block header %}
+<div class="container-fluid p-0" style="margin-top:80px;">
+
+  <h1 class="fw-bold" style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Lista de Categorias
+  </h1>
+</div>
+  
+{% endblock %} 
 {% block content %}
 
 <div class="container-fluid p-0">
 
-  <!-- Header -->
-  <div class="bg-light py-4 text-center position-relative">
-    <div class="position-absolute top-0 start-0 p-3">
-      <!-- <img src="{% static 'img/logo.png' %}" width="120"> -->
-      <div class="fw-bold">M.K.M</div>
-    </div>
-    <h1 class="fw-bold">Lista de Categorias</h1>
-  </div>
+
 
   <!-- Fundo Azul -->
-  <div class="bg-primary d-flex justify-content-center align-items-center" style="height: 70vh;">
+  <div class="bg-primary d-flex justify-content-center align-items-center" style="max-height: fit-content;">
 
     <!-- Card central -->
-    <div class="bg-light p-5 rounded shadow" style="width: 90%;">
+    <div class="bg-light p-5 rounded shadow m-5" style="width: 800px;">
 
       <!-- Botão Voltar -->
       <div class="mb-4">
