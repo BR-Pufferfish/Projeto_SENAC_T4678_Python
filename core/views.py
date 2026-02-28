@@ -64,6 +64,9 @@ class ListarEstoqueView(ListView):
     template_name = 'core/listar_mercadoria.html'
     context_object_name = 'mercadorias'
 
+    def get_queryset(self):
+        return Estoque.objects.exclude(status='Despachado')
+
 
 class NovoEstoqueView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Estoque
