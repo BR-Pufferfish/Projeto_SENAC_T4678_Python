@@ -6,9 +6,9 @@ Repositório para o projeto de conclusão das aulas de Python SENAC - Professor 
 
 # Recursos Utilizados:
 
-Python
-Django (v6.0.2)
-SQLite
+Python   /   
+Django (v6.0.2)   /   
+SQLite   /   
 SQLite Viewer (v25.12.2)
 
 
