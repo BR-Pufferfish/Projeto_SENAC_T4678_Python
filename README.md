@@ -17,8 +17,10 @@ SQLite Viewer (v25.12.2)
 
 Marcelo
    - Maior atuação no código em si, criando as CBVs, rotas, e aplicando as navegações.
+
 Miguel
    - Projetou o slide e foi revisando o projeto, conferindo com o esperado e orientando
+
 Kauã
    - Projetou o Front, idealizando as telas e desenhando-as no template
 
